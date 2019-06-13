@@ -1,4 +1,4 @@
-package com.fanyi.andnow.mapper.user;
+package com.fanyi.andnow.user.mapper;
 
 /**
  * 用户映射接口

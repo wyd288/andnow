@@ -1,4 +1,4 @@
-package com.fanyi.andnow.service.user;
+package com.fanyi.andnow.user.service;
 
 /**
  * 用户服务接口

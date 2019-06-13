@@ -1,4 +1,4 @@
-package com.fanyi.andnow.controller.user;
+package com.fanyi.andnow.user.controller;
 
 /**
  * @author wangyds
