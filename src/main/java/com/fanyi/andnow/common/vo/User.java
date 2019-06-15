@@ -11,23 +11,89 @@ import java.util.Objects;
  */
 public class User {
 
-
+    /**
+     * 用户主键
+     */
     private Integer pk_user;
+
+    /**
+     * 集团
+     */
     private Integer pk_group;
+
+    /**
+     * 组织
+     */
     private Integer pk_org;
+
+    /**
+     * 用户编码
+     */
     private String code;
+
+    /**
+     * 用户名称
+     */
     private String name;
+
+    /**
+     * 用户密码
+     */
     private String password;
+
+    /**
+     * 用户性别
+     */
     private Integer sex;
+
+    /**
+     * 出生日期
+     */
     private Date birthday;
+
+    /**
+     * 手机号码
+     */
     private String phone;
+
+    /**
+     * 用户地址
+     */
     private String address;
+
+    /**
+     * 备注
+     */
     private String note;
+
+    /**
+     *  创建人员
+     */
     private Integer creator;
+
+    /**
+     * 创建时间
+     */
     private Date creationtime;
+
+    /**
+     * 修改人员
+     */
     private Integer modifier;
+
+    /**
+     * 修改时间
+     */
     private Date modifiedtime;
+
+    /**
+     * 删除标记
+     */
     private Integer dr;
+
+    /**
+     * 时间戳
+     */
     private Date ts	;
 
     public User() {

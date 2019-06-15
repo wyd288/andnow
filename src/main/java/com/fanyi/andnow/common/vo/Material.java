@@ -11,35 +11,154 @@ import java.util.Objects;
  */
 public class Material {
 
-    private	Integer	pk_material	;
-    private	Integer	pk_group	;
-    private	Integer	pk_org	;
-    private	String	code	;
-    private	String	name	;
-    private	String	version	;
-    private	String	specification	;
-    private	String	type	;
-    private	String	shortname	;
-    private	String	mnecode	;
-    private	Integer	pk_measdoc	;
-    private	Integer	pk_marbasclass	;
-    private	Integer	pk_prodline	;
-    private	Integer	pk_brand	;
-    private	Double	discountflag	;
-    private	Double	unitlenth	;
-    private	Double	unitheight	;
-    private	Double	unitwidth	;
-    private	Double	unitvolume	;
-    private	Double	unitweight	;
-    private	BigDecimal	retailprice	;
-    private BigDecimal costprice	;
-    private	Integer	enablestate	;
-    private	String	note	;
-    private	Integer	creator	;
-    private Date creationtime	;
-    private	Integer	modifier	;
-    private	Date	modifiedtime	;
-    private	Integer	dr	;
+    /**
+     * 物料主键
+     */
+    private	Integer	pk_material;
+
+    /**
+     * 集团
+     */
+    private	Integer	pk_group;
+
+    /**
+     * 组织
+     */
+    private	Integer	pk_org;
+
+    /**
+     * 物料编码
+     */
+    private	String	code;
+
+    /**
+     * 物料名称
+     */
+    private	String	name;
+
+    /**
+     * 版本
+     */
+    private	String	version;
+
+    /**
+     * 规格
+     */
+    private	String	specification;
+
+    /**
+     * 型号
+     */
+    private	String	type;
+
+    /**
+     * 简称
+     */
+    private	String	shortname;
+
+    /**
+     * 助记码
+     */
+    private	String	mnecode;
+
+    /**
+     * 主计量单位
+     */
+    private	Integer	pk_measdoc;
+
+    /**
+     * 物料分类
+     */
+    private	Integer	pk_marbasclass;
+
+    /**
+     * 产品线
+     */
+    private	Integer	pk_prodline;
+
+    /**
+     * 品牌
+     */
+    private	Integer	pk_brand;
+
+    /**
+     * 价格折扣
+     */
+    private	Double	discountflag;
+
+    /**
+     * 长度
+     */
+    private	Double	unitlenth;
+
+    /**
+     * 高度
+     */
+    private	Double	unitheight;
+
+    /**
+     * 宽度
+     */
+    private	Double	unitwidth;
+
+    /**
+     * 单位体积
+     */
+    private	Double	unitvolume;
+
+    /**
+     * 单位重量
+     */
+    private	Double	unitweight;
+
+    /**
+     * 零售价格
+     */
+    private	BigDecimal	retailprice;
+
+    /**
+     * 成本价格
+     */
+    private BigDecimal costprice;
+
+    /**
+     * 启用状态
+     */
+    private	Integer	enablestate;
+
+    /**
+     * 备注
+     */
+    private	String	note;
+
+    /**
+     * 创建人
+     */
+    private	Integer	creator;
+
+    /**
+     * 创建时间
+     */
+    private Date creationtime;
+
+    /**
+     * 修改人
+     */
+    private	Integer	modifier;
+
+    /**
+     * 修改时间
+     */
+    private	Date	modifiedtime;
+
+    /**
+     * 删除标志
+     */
+    private	Integer	dr;
+
+    /**
+     * 时间戳
+     */
     private	Date	ts	;
 
     public Material() {
