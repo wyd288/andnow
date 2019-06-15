@@ -11,6 +11,7 @@ import java.util.Objects;
  */
 public class User {
 
+
     private Integer pk_user;
     private Integer pk_group;
     private Integer pk_org;
