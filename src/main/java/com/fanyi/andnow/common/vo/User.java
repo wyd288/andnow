@@ -1,127 +1,64 @@
 package com.fanyi.andnow.common.vo;
 
 import java.util.Date;
-import java.util.Objects;
 
-/**
- * 用户实体类
- *
- * @author wangyds
- * @date 2019/06/13
- */
 public class User {
+    private Integer pkUser;
 
-    /**
-     * 用户主键
-     */
-    private Integer pk_user;
+    private Integer pkGroup;
 
-    /**
-     * 集团
-     */
-    private Integer pk_group;
+    private Integer pkOrg;
 
-    /**
-     * 组织
-     */
-    private Integer pk_org;
-
-    /**
-     * 用户编码
-     */
     private String code;
 
-    /**
-     * 用户名称
-     */
     private String name;
 
-    /**
-     * 用户密码
-     */
     private String password;
 
-    /**
-     * 用户性别
-     */
-    private Integer sex;
+    private Byte sex;
 
-    /**
-     * 出生日期
-     */
     private Date birthday;
 
-    /**
-     * 手机号码
-     */
     private String phone;
 
-    /**
-     * 用户地址
-     */
     private String address;
 
-    /**
-     * 备注
-     */
     private String note;
 
-    /**
-     *  创建人员
-     */
     private Integer creator;
 
-    /**
-     * 创建时间
-     */
     private Date creationtime;
 
-    /**
-     * 修改人员
-     */
     private Integer modifier;
 
-    /**
-     * 修改时间
-     */
     private Date modifiedtime;
 
-    /**
-     * 删除标记
-     */
-    private Integer dr;
+    private Boolean dr;
 
-    /**
-     * 时间戳
-     */
-    private Date ts	;
+    private Date ts;
 
-    public User() {
+    public Integer getPkUser() {
+        return pkUser;
     }
 
-
-    public Integer getPk_user() {
-        return pk_user;
+    public void setPkUser(Integer pkUser) {
+        this.pkUser = pkUser;
     }
 
-    public void setPk_user(Integer pk_user) {
-        this.pk_user = pk_user;
+    public Integer getPkGroup() {
+        return pkGroup;
     }
 
-    public Integer getPk_group() {
-        return pk_group;
+    public void setPkGroup(Integer pkGroup) {
+        this.pkGroup = pkGroup;
     }
 
-    public void setPk_group(Integer pk_group) {
-        this.pk_group = pk_group;
+    public Integer getPkOrg() {
+        return pkOrg;
     }
 
-    public Integer getPk_org() {
-        return pk_org;
-    }
-
-    public void setPk_org(Integer pk_org) {
-        this.pk_org = pk_org;
+    public void setPkOrg(Integer pkOrg) {
+        this.pkOrg = pkOrg;
     }
 
     public String getCode() {
@@ -129,7 +66,7 @@ public class User {
     }
 
     public void setCode(String code) {
-        this.code = code;
+        this.code = code == null ? null : code.trim();
     }
 
     public String getName() {
@@ -137,7 +74,7 @@ public class User {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
     public String getPassword() {
@@ -145,14 +82,14 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
-    public Integer getSex() {
+    public Byte getSex() {
         return sex;
     }
 
-    public void setSex(Integer sex) {
+    public void setSex(Byte sex) {
         this.sex = sex;
     }
 
@@ -169,7 +106,7 @@ public class User {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getAddress() {
@@ -177,7 +114,7 @@ public class User {
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.address = address == null ? null : address.trim();
     }
 
     public String getNote() {
@@ -185,7 +122,7 @@ public class User {
     }
 
     public void setNote(String note) {
-        this.note = note;
+        this.note = note == null ? null : note.trim();
     }
 
     public Integer getCreator() {
@@ -220,11 +157,11 @@ public class User {
         this.modifiedtime = modifiedtime;
     }
 
-    public Integer getDr() {
+    public Boolean getDr() {
         return dr;
     }
 
-    public void setDr(Integer dr) {
+    public void setDr(Boolean dr) {
         this.dr = dr;
     }
 
@@ -234,57 +171,5 @@ public class User {
 
     public void setTs(Date ts) {
         this.ts = ts;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(pk_user, user.pk_user) &&
-                Objects.equals(pk_group, user.pk_group) &&
-                Objects.equals(pk_org, user.pk_org) &&
-                Objects.equals(code, user.code) &&
-                Objects.equals(name, user.name) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(sex, user.sex) &&
-                Objects.equals(birthday, user.birthday) &&
-                Objects.equals(phone, user.phone) &&
-                Objects.equals(address, user.address) &&
-                Objects.equals(note, user.note) &&
-                Objects.equals(creator, user.creator) &&
-                Objects.equals(creationtime, user.creationtime) &&
-                Objects.equals(modifier, user.modifier) &&
-                Objects.equals(modifiedtime, user.modifiedtime) &&
-                Objects.equals(dr, user.dr) &&
-                Objects.equals(ts, user.ts);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(pk_user, pk_group, pk_org, code, name, password, sex, birthday, phone, address, note, creator, creationtime, modifier, modifiedtime, dr, ts);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "pk_user=" + pk_user +
-                ", pk_group=" + pk_group +
-                ", pk_org=" + pk_org +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", sex=" + sex +
-                ", birthday=" + birthday +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", note='" + note + '\'' +
-                ", creator=" + creator +
-                ", creationtime=" + creationtime +
-                ", modifier=" + modifier +
-                ", modifiedtime=" + modifiedtime +
-                ", dr=" + dr +
-                ", ts=" + ts +
-                '}';
     }
 }
