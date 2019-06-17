@@ -2,7 +2,12 @@ package com.fanyi.andnow.common.vo;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
+/**
+ * 物料实体类
+ *
+ * @author wangyds
+ * @date 2019/6/17 8:56
+ */
 public class Material {
     private Integer pkMaterial;
 

@@ -2,6 +2,12 @@ package com.fanyi.andnow.common.vo;
 
 import java.util.Date;
 
+/**
+ * 用户实体类
+ *
+ * @author wangyds
+ * @date 2019/6/17 8:56
+ */
 public class User {
     private Integer pkUser;
 

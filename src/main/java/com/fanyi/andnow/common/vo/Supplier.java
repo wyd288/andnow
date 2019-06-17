@@ -1,7 +1,12 @@
 package com.fanyi.andnow.common.vo;
 
 import java.util.Date;
-
+/**
+ * 供应商实体类
+ *
+ * @author wangyds
+ * @date 2019/6/17 8:56
+ */
 public class Supplier {
     private Integer pkSupplier;
 
