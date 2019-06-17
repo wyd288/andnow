@@ -1,10 +1,18 @@
 package com.fanyi.andnow.supplier.mapper;
 
-import com.fanyi.andnow.common.vo.Supplier;
+import com.fanyi.andnow.common.vo.SupplierVO;
 import com.fanyi.andnow.supplier.service.SupplierExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+/**
+ * 供应商数据层
+ *
+ * @author wangyds
+ * @date 2019/6/17 9:58
+ */
+@Mapper
 public interface SupplierMapper {
     int countByExample(SupplierExample example);
 
@@ -12,19 +20,19 @@ public interface SupplierMapper {
 
     int deleteByPrimaryKey(Integer pkSupplier);
 
-    int insert(Supplier record);
+    int insert(SupplierVO record);
 
-    int insertSelective(Supplier record);
+    int insertSelective(SupplierVO record);
 
-    List<Supplier> selectByExample(SupplierExample example);
+    List<SupplierVO> selectByExample(SupplierExample example);
 
-    Supplier selectByPrimaryKey(Integer pkSupplier);
+    SupplierVO selectByPrimaryKey(Integer pkSupplier);
 
-    int updateByExampleSelective(@Param("record") Supplier record, @Param("example") SupplierExample example);
+    int updateByExampleSelective(@Param("record") SupplierVO record, @Param("example") SupplierExample example);
 
-    int updateByExample(@Param("record") Supplier record, @Param("example") SupplierExample example);
+    int updateByExample(@Param("record") SupplierVO record, @Param("example") SupplierExample example);
 
-    int updateByPrimaryKeySelective(Supplier record);
+    int updateByPrimaryKeySelective(SupplierVO record);
 
-    int updateByPrimaryKey(Supplier record);
+    int updateByPrimaryKey(SupplierVO record);
 }

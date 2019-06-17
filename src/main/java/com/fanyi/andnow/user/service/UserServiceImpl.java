@@ -1,6 +1,6 @@
 package com.fanyi.andnow.user.service;
 
-import com.fanyi.andnow.common.vo.User;
+import com.fanyi.andnow.common.vo.UserVO;
 import com.fanyi.andnow.user.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public User getUser() {
+    public UserVO getUser() {
 
         return userMapper.selectByPrimaryKey(1);
     }

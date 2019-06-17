@@ -1,10 +1,18 @@
 package com.fanyi.andnow.storage.mapper;
 
-import com.fanyi.andnow.common.vo.Storage;
+import com.fanyi.andnow.common.vo.StorageVO;
 import com.fanyi.andnow.storage.service.StorageExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+/**
+ * 仓库数据层
+ *
+ * @author wangyds
+ * @date 2019/6/17 9:58
+ */
+@Mapper
 public interface StorageMapper {
     int countByExample(StorageExample example);
 
@@ -12,19 +20,19 @@ public interface StorageMapper {
 
     int deleteByPrimaryKey(Integer pkStorage);
 
-    int insert(Storage record);
+    int insert(StorageVO record);
 
-    int insertSelective(Storage record);
+    int insertSelective(StorageVO record);
 
-    List<Storage> selectByExample(StorageExample example);
+    List<StorageVO> selectByExample(StorageExample example);
 
-    Storage selectByPrimaryKey(Integer pkStorage);
+    StorageVO selectByPrimaryKey(Integer pkStorage);
 
-    int updateByExampleSelective(@Param("record") Storage record, @Param("example") StorageExample example);
+    int updateByExampleSelective(@Param("record") StorageVO record, @Param("example") StorageExample example);
 
-    int updateByExample(@Param("record") Storage record, @Param("example") StorageExample example);
+    int updateByExample(@Param("record") StorageVO record, @Param("example") StorageExample example);
 
-    int updateByPrimaryKeySelective(Storage record);
+    int updateByPrimaryKeySelective(StorageVO record);
 
-    int updateByPrimaryKey(Storage record);
+    int updateByPrimaryKey(StorageVO record);
 }

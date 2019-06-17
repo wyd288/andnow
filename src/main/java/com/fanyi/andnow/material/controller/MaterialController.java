@@ -1,13 +1,14 @@
 package com.fanyi.andnow.material.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 物料控制器
+ * 物料控制层
  *
  * @author Administrator
  * @date 2019/6/16  18:50
  */
-@Controller
+@RestController
 public class MaterialController {
 }

@@ -7,7 +7,7 @@ import java.util.Date;
  * @author wangyds
  * @date 2019/6/17 8:56
  */
-public class Storage {
+public class StorageVO {
     private Integer pkStorage;
 
     private Integer pkGroup;

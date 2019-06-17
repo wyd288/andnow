@@ -1,10 +1,18 @@
 package com.fanyi.andnow.material.mapper;
 
-import com.fanyi.andnow.common.vo.Material;
+import com.fanyi.andnow.common.vo.MaterialVO;
 import com.fanyi.andnow.material.service.MaterialExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+/**
+ * 物料数据层
+ *
+ * @author wangyds
+ * @date 2019/6/17 9:57
+ */
+@Mapper
 public interface MaterialMapper {
     int countByExample(MaterialExample example);
 
@@ -12,19 +20,19 @@ public interface MaterialMapper {
 
     int deleteByPrimaryKey(Integer pkMaterial);
 
-    int insert(Material record);
+    int insert(MaterialVO record);
 
-    int insertSelective(Material record);
+    int insertSelective(MaterialVO record);
 
-    List<Material> selectByExample(MaterialExample example);
+    List<MaterialVO> selectByExample(MaterialExample example);
 
-    Material selectByPrimaryKey(Integer pkMaterial);
+    MaterialVO selectByPrimaryKey(Integer pkMaterial);
 
-    int updateByExampleSelective(@Param("record") Material record, @Param("example") MaterialExample example);
+    int updateByExampleSelective(@Param("record") MaterialVO record, @Param("example") MaterialExample example);
 
-    int updateByExample(@Param("record") Material record, @Param("example") MaterialExample example);
+    int updateByExample(@Param("record") MaterialVO record, @Param("example") MaterialExample example);
 
-    int updateByPrimaryKeySelective(Material record);
+    int updateByPrimaryKeySelective(MaterialVO record);
 
-    int updateByPrimaryKey(Material record);
+    int updateByPrimaryKey(MaterialVO record);
 }

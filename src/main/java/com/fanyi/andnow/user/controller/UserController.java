@@ -1,20 +1,17 @@
 package com.fanyi.andnow.user.controller;
 
-import com.fanyi.andnow.common.vo.User;
+import com.fanyi.andnow.common.vo.UserVO;
 import com.fanyi.andnow.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
- * 用户控制器
+ * 用户控制层
  *
  * @author wangyds
  * @date 2019/6/17 8:58
@@ -23,7 +20,7 @@ import java.util.List;
 @ResponseBody
 public class UserController {
 
-    @Resource
+    @Autowired
     private UserService userService;
 
     /**
@@ -32,8 +29,8 @@ public class UserController {
      * @return
      */
     @RequestMapping(value="getUser",method= RequestMethod.GET)
-    public User getUsers(HttpServletResponse res){
-        User user = null;
+    public UserVO getUsers(HttpServletResponse res){
+        UserVO user = null;
         user = userService.getUser();
         return user;
     }

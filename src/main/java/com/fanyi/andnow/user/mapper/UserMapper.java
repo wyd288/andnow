@@ -1,6 +1,6 @@
 package com.fanyi.andnow.user.mapper;
 
-import com.fanyi.andnow.common.vo.User;
+import com.fanyi.andnow.common.vo.UserVO;
 import com.fanyi.andnow.user.service.UserExample;
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * 用户Mapper
+ * 用户数据层
  *
  * @author wangyds
  * @date 2019/6/17 9:18
@@ -21,19 +21,19 @@ public interface UserMapper {
 
     int deleteByPrimaryKey(Integer pkUser);
 
-    int insert(User record);
+    int insert(UserVO record);
 
-    int insertSelective(User record);
+    int insertSelective(UserVO record);
 
-    List<User> selectByExample(UserExample example);
+    List<UserVO> selectByExample(UserExample example);
 
-    User selectByPrimaryKey(Integer pkUser);
+    UserVO selectByPrimaryKey(Integer pkUser);
 
-    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
+    int updateByExampleSelective(@Param("record") UserVO record, @Param("example") UserExample example);
 
-    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
+    int updateByExample(@Param("record") UserVO record, @Param("example") UserExample example);
 
-    int updateByPrimaryKeySelective(User record);
+    int updateByPrimaryKeySelective(UserVO record);
 
-    int updateByPrimaryKey(User record);
+    int updateByPrimaryKey(UserVO record);
 }

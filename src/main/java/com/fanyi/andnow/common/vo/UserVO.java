@@ -8,7 +8,7 @@ import java.util.Date;
  * @author wangyds
  * @date 2019/6/17 8:56
  */
-public class User {
+public class UserVO {
     private Integer pkUser;
 
     private Integer pkGroup;
