@@ -3,10 +3,7 @@ package com.fanyi.andnow.user.controller;
 import com.fanyi.andnow.common.vo.UserVO;
 import com.fanyi.andnow.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -35,6 +32,15 @@ public class UserController {
         return user;
     }
 
+    /**
+     * 添加用户
+     * @param userVO（用户）
+     * @return int （大于0成功，小于0失败。）
+     */
+    @PostMapping("/insertUser")
+    public int insertUserVo(@RequestBody UserVO userVO){
+        return userService.insertUser(userVO);
+    }
 
 
 

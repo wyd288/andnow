@@ -16,4 +16,11 @@ public interface UserService {
      */
     UserVO getUser();
 
+    /**
+     * 添加用户
+     * @param userVO
+     * @return int （大于0成功，小于0失败。）
+     */
+    int insertUser(UserVO userVO);
+
 }

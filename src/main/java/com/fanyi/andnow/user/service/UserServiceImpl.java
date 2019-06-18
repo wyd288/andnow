@@ -23,4 +23,9 @@ public class UserServiceImpl implements UserService {
 
         return userMapper.selectByPrimaryKey(1);
     }
+
+    @Override
+    public int insertUser(UserVO userVO) {
+        return userMapper.insertSelective(userVO);
+    }
 }
