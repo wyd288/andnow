@@ -23,12 +23,6 @@ public interface UserMapper {
 
     int insert(UserVO record);
 
-    /**
-     * 添加用户
-     * @author yutao
-     * @param record
-     * @return int （大于0成功，小于0失败。）
-     */
     int insertSelective(UserVO record);
 
     List<UserVO> selectByExample(UserExample example);
