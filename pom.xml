@@ -29,6 +29,7 @@
         <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
         <springloaded.version>1.2.6.RELEASE</springloaded.version>
         <lombok.version>1.16.20</lombok.version>
+        <pinyin4j.version>2.5.0</pinyin4j.version>
     </properties>
 
     <dependencies>
@@ -96,7 +97,12 @@
             <!--<artifactId>commons-io</artifactId>-->
             <!--<version>${commons-io.version}</version>-->
         <!--</dependency>-->
-
+        <!--汉字生成拼音，首字母可作为助记码使用-->
+        <dependency>
+            <groupId>com.belerweb</groupId>
+            <artifactId>pinyin4j</artifactId>
+            <version>${pinyin4j.version}</version>
+        </dependency>
 
         <!--减少重复编码的插件，可自动生成bean的getter、setter和构造方法等-->
         <dependency>
