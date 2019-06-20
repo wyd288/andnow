@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fanyi.andnow.mysql.mapper.StorageVOMapper" >
+  <resultMap id="BaseResultMap" type="com.fanyi.andnow.mysql.vo.StorageVO" >
+    <id column="pk_storage" property="pkStorage" jdbcType="INTEGER" />
+    <result column="pk_group" property="pkGroup" jdbcType="INTEGER" />
+    <result column="pk_org" property="pkOrg" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="principal" property="principal" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="csflag" property="csflag" jdbcType="INTEGER" />
+    <result column="isgubstore" property="isgubstore" jdbcType="INTEGER" />
+    <result column="isprostore" property="isprostore" jdbcType="INTEGER" />
+    <result column="isonthewaystore" property="isonthewaystore" jdbcType="INTEGER" />
+    <result column="isdirectstore" property="isdirectstore" jdbcType="INTEGER" />
+    <result column="isagentstore" property="isagentstore" jdbcType="INTEGER" />
+    <result column="isretailstore" property="isretailstore" jdbcType="INTEGER" />
+    <result column="isshopstore" property="isshopstore" jdbcType="INTEGER" />
+    <result column="iskptaxstore" property="iskptaxstore" jdbcType="INTEGER" />
+    <result column="enablestate" property="enablestate" jdbcType="INTEGER" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="creationtime" property="creationtime" jdbcType="TIMESTAMP" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="modifiedtime" property="modifiedtime" jdbcType="TIMESTAMP" />
+    <result column="dr" property="dr" jdbcType="INTEGER" />
+    <result column="ts" property="ts" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pk_storage, pk_group, pk_org, code, name, version, address, principal, phone, csflag, 
+    isgubstore, isprostore, isonthewaystore, isdirectstore, isagentstore, isretailstore, 
+    isshopstore, iskptaxstore, enablestate, note, creator, creationtime, modifier, modifiedtime, 
+    dr, ts
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fanyi.andnow.mysql.vo.StorageVOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from bd_storage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bd_storage
+    where pk_storage = #{pkStorage,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bd_storage
+    where pk_storage = #{pkStorage,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fanyi.andnow.mysql.vo.StorageVOExample" >
+    delete from bd_storage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fanyi.andnow.mysql.vo.StorageVO" >
+    insert into bd_storage (pk_storage, pk_group, pk_org, 
+      code, name, version, 
+      address, principal, phone, 
+      csflag, isgubstore, isprostore, 
+      isonthewaystore, isdirectstore, isagentstore, 
+      isretailstore, isshopstore, iskptaxstore, 
+      enablestate, note, creator, 
+      creationtime, modifier, modifiedtime, 
+      dr, ts)
+    values (#{pkStorage,jdbcType=INTEGER}, #{pkGroup,jdbcType=INTEGER}, #{pkOrg,jdbcType=INTEGER}, 
+      #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{principal,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
+      #{csflag,jdbcType=INTEGER}, #{isgubstore,jdbcType=INTEGER}, #{isprostore,jdbcType=INTEGER}, 
+      #{isonthewaystore,jdbcType=INTEGER}, #{isdirectstore,jdbcType=INTEGER}, #{isagentstore,jdbcType=INTEGER}, 
+      #{isretailstore,jdbcType=INTEGER}, #{isshopstore,jdbcType=INTEGER}, #{iskptaxstore,jdbcType=INTEGER}, 
+      #{enablestate,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}, #{creator,jdbcType=INTEGER}, 
+      #{creationtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER}, #{modifiedtime,jdbcType=TIMESTAMP}, 
+      #{dr,jdbcType=INTEGER}, #{ts,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fanyi.andnow.mysql.vo.StorageVO" >
+    insert into bd_storage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkStorage != null" >
+        pk_storage,
+      </if>
+      <if test="pkGroup != null" >
+        pk_group,
+      </if>
+      <if test="pkOrg != null" >
+        pk_org,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="principal != null" >
+        principal,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="csflag != null" >
+        csflag,
+      </if>
+      <if test="isgubstore != null" >
+        isgubstore,
+      </if>
+      <if test="isprostore != null" >
+        isprostore,
+      </if>
+      <if test="isonthewaystore != null" >
+        isonthewaystore,
+      </if>
+      <if test="isdirectstore != null" >
+        isdirectstore,
+      </if>
+      <if test="isagentstore != null" >
+        isagentstore,
+      </if>
+      <if test="isretailstore != null" >
+        isretailstore,
+      </if>
+      <if test="isshopstore != null" >
+        isshopstore,
+      </if>
+      <if test="iskptaxstore != null" >
+        iskptaxstore,
+      </if>
+      <if test="enablestate != null" >
+        enablestate,
+      </if>
+      <if test="note != null" >
+        note,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="creationtime != null" >
+        creationtime,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime,
+      </if>
+      <if test="dr != null" >
+        dr,
+      </if>
+      <if test="ts != null" >
+        ts,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkStorage != null" >
+        #{pkStorage,jdbcType=INTEGER},
+      </if>
+      <if test="pkGroup != null" >
+        #{pkGroup,jdbcType=INTEGER},
+      </if>
+      <if test="pkOrg != null" >
+        #{pkOrg,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="principal != null" >
+        #{principal,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="csflag != null" >
+        #{csflag,jdbcType=INTEGER},
+      </if>
+      <if test="isgubstore != null" >
+        #{isgubstore,jdbcType=INTEGER},
+      </if>
+      <if test="isprostore != null" >
+        #{isprostore,jdbcType=INTEGER},
+      </if>
+      <if test="isonthewaystore != null" >
+        #{isonthewaystore,jdbcType=INTEGER},
+      </if>
+      <if test="isdirectstore != null" >
+        #{isdirectstore,jdbcType=INTEGER},
+      </if>
+      <if test="isagentstore != null" >
+        #{isagentstore,jdbcType=INTEGER},
+      </if>
+      <if test="isretailstore != null" >
+        #{isretailstore,jdbcType=INTEGER},
+      </if>
+      <if test="isshopstore != null" >
+        #{isshopstore,jdbcType=INTEGER},
+      </if>
+      <if test="iskptaxstore != null" >
+        #{iskptaxstore,jdbcType=INTEGER},
+      </if>
+      <if test="enablestate != null" >
+        #{enablestate,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="creationtime != null" >
+        #{creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedtime != null" >
+        #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dr != null" >
+        #{dr,jdbcType=INTEGER},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fanyi.andnow.mysql.vo.StorageVOExample" resultType="java.lang.Integer" >
+    select count(*) from bd_storage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update bd_storage
+    <set >
+      <if test="record.pkStorage != null" >
+        pk_storage = #{record.pkStorage,jdbcType=INTEGER},
+      </if>
+      <if test="record.pkGroup != null" >
+        pk_group = #{record.pkGroup,jdbcType=INTEGER},
+      </if>
+      <if test="record.pkOrg != null" >
+        pk_org = #{record.pkOrg,jdbcType=INTEGER},
+      </if>
+      <if test="record.code != null" >
+        code = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.version != null" >
+        version = #{record.version,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.principal != null" >
+        principal = #{record.principal,jdbcType=INTEGER},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.csflag != null" >
+        csflag = #{record.csflag,jdbcType=INTEGER},
+      </if>
+      <if test="record.isgubstore != null" >
+        isgubstore = #{record.isgubstore,jdbcType=INTEGER},
+      </if>
+      <if test="record.isprostore != null" >
+        isprostore = #{record.isprostore,jdbcType=INTEGER},
+      </if>
+      <if test="record.isonthewaystore != null" >
+        isonthewaystore = #{record.isonthewaystore,jdbcType=INTEGER},
+      </if>
+      <if test="record.isdirectstore != null" >
+        isdirectstore = #{record.isdirectstore,jdbcType=INTEGER},
+      </if>
+      <if test="record.isagentstore != null" >
+        isagentstore = #{record.isagentstore,jdbcType=INTEGER},
+      </if>
+      <if test="record.isretailstore != null" >
+        isretailstore = #{record.isretailstore,jdbcType=INTEGER},
+      </if>
+      <if test="record.isshopstore != null" >
+        isshopstore = #{record.isshopstore,jdbcType=INTEGER},
+      </if>
+      <if test="record.iskptaxstore != null" >
+        iskptaxstore = #{record.iskptaxstore,jdbcType=INTEGER},
+      </if>
+      <if test="record.enablestate != null" >
+        enablestate = #{record.enablestate,jdbcType=INTEGER},
+      </if>
+      <if test="record.note != null" >
+        note = #{record.note,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creator != null" >
+        creator = #{record.creator,jdbcType=INTEGER},
+      </if>
+      <if test="record.creationtime != null" >
+        creationtime = #{record.creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifier != null" >
+        modifier = #{record.modifier,jdbcType=INTEGER},
+      </if>
+      <if test="record.modifiedtime != null" >
+        modifiedtime = #{record.modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dr != null" >
+        dr = #{record.dr,jdbcType=INTEGER},
+      </if>
+      <if test="record.ts != null" >
+        ts = #{record.ts,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update bd_storage
+    set pk_storage = #{record.pkStorage,jdbcType=INTEGER},
+      pk_group = #{record.pkGroup,jdbcType=INTEGER},
+      pk_org = #{record.pkOrg,jdbcType=INTEGER},
+      code = #{record.code,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      version = #{record.version,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      principal = #{record.principal,jdbcType=INTEGER},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      csflag = #{record.csflag,jdbcType=INTEGER},
+      isgubstore = #{record.isgubstore,jdbcType=INTEGER},
+      isprostore = #{record.isprostore,jdbcType=INTEGER},
+      isonthewaystore = #{record.isonthewaystore,jdbcType=INTEGER},
+      isdirectstore = #{record.isdirectstore,jdbcType=INTEGER},
+      isagentstore = #{record.isagentstore,jdbcType=INTEGER},
+      isretailstore = #{record.isretailstore,jdbcType=INTEGER},
+      isshopstore = #{record.isshopstore,jdbcType=INTEGER},
+      iskptaxstore = #{record.iskptaxstore,jdbcType=INTEGER},
+      enablestate = #{record.enablestate,jdbcType=INTEGER},
+      note = #{record.note,jdbcType=VARCHAR},
+      creator = #{record.creator,jdbcType=INTEGER},
+      creationtime = #{record.creationtime,jdbcType=TIMESTAMP},
+      modifier = #{record.modifier,jdbcType=INTEGER},
+      modifiedtime = #{record.modifiedtime,jdbcType=TIMESTAMP},
+      dr = #{record.dr,jdbcType=INTEGER},
+      ts = #{record.ts,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.mysql.vo.StorageVO" >
+    update bd_storage
+    <set >
+      <if test="pkGroup != null" >
+        pk_group = #{pkGroup,jdbcType=INTEGER},
+      </if>
+      <if test="pkOrg != null" >
+        pk_org = #{pkOrg,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="principal != null" >
+        principal = #{principal,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="csflag != null" >
+        csflag = #{csflag,jdbcType=INTEGER},
+      </if>
+      <if test="isgubstore != null" >
+        isgubstore = #{isgubstore,jdbcType=INTEGER},
+      </if>
+      <if test="isprostore != null" >
+        isprostore = #{isprostore,jdbcType=INTEGER},
+      </if>
+      <if test="isonthewaystore != null" >
+        isonthewaystore = #{isonthewaystore,jdbcType=INTEGER},
+      </if>
+      <if test="isdirectstore != null" >
+        isdirectstore = #{isdirectstore,jdbcType=INTEGER},
+      </if>
+      <if test="isagentstore != null" >
+        isagentstore = #{isagentstore,jdbcType=INTEGER},
+      </if>
+      <if test="isretailstore != null" >
+        isretailstore = #{isretailstore,jdbcType=INTEGER},
+      </if>
+      <if test="isshopstore != null" >
+        isshopstore = #{isshopstore,jdbcType=INTEGER},
+      </if>
+      <if test="iskptaxstore != null" >
+        iskptaxstore = #{iskptaxstore,jdbcType=INTEGER},
+      </if>
+      <if test="enablestate != null" >
+        enablestate = #{enablestate,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="creationtime != null" >
+        creationtime = #{creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dr != null" >
+        dr = #{dr,jdbcType=INTEGER},
+      </if>
+      <if test="ts != null" >
+        ts = #{ts,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pk_storage = #{pkStorage,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.mysql.vo.StorageVO" >
+    update bd_storage
+    set pk_group = #{pkGroup,jdbcType=INTEGER},
+      pk_org = #{pkOrg,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      principal = #{principal,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      csflag = #{csflag,jdbcType=INTEGER},
+      isgubstore = #{isgubstore,jdbcType=INTEGER},
+      isprostore = #{isprostore,jdbcType=INTEGER},
+      isonthewaystore = #{isonthewaystore,jdbcType=INTEGER},
+      isdirectstore = #{isdirectstore,jdbcType=INTEGER},
+      isagentstore = #{isagentstore,jdbcType=INTEGER},
+      isretailstore = #{isretailstore,jdbcType=INTEGER},
+      isshopstore = #{isshopstore,jdbcType=INTEGER},
+      iskptaxstore = #{iskptaxstore,jdbcType=INTEGER},
+      enablestate = #{enablestate,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=INTEGER},
+      creationtime = #{creationtime,jdbcType=TIMESTAMP},
+      modifier = #{modifier,jdbcType=INTEGER},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      dr = #{dr,jdbcType=INTEGER},
+      ts = #{ts,jdbcType=TIMESTAMP}
+    where pk_storage = #{pkStorage,jdbcType=INTEGER}
+  </update>
+</mapper>
