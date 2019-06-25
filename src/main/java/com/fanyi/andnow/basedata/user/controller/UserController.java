@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
  * @date 2019/6/17 8:58
  */
 @RestController
-@ResponseBody
 public class UserController {
 
     @Autowired
@@ -28,7 +27,7 @@ public class UserController {
      */
     @RequestMapping(value="getUser",method= RequestMethod.GET)
     public UserVO getUsers(HttpServletResponse res){
-        UserVO user = null;
+        UserVO user ;
         user = userService.getUser();
         return user;
     }
