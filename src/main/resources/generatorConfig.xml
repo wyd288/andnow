@@ -7,7 +7,7 @@
     <!--导入属性配置-->
     <properties resource="application.properties"></properties>
     <!--mysql 连接数据库jar 这里选择自己本地位置-->
-    <classPathEntry location="D:/mysql-connector-java-5.1.30.jar" />
+    <classPathEntry location="D:/mysql-connector-java-5.1.46.jar" />
     <context id="default" targetRuntime="MyBatis3">
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
