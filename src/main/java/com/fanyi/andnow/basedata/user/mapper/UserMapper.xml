@@ -134,7 +134,7 @@
     values (#{pkUser,jdbcType=INTEGER}, #{pkGroup,jdbcType=INTEGER}, #{pkOrg,jdbcType=INTEGER}, 
       #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{pwdlevel,jdbcType=TINYINT}, #{pwdparam,jdbcType=VARCHAR}, #{identityverifycode,jdbcType=TINYINT}, 
-      #{enabledate,jdbcType=DATE}, #{disabledate,jdbcType=DATE}, #{islocked,jdbcType=TINYINT}, 
+      #{enabledate,jdbcType=DATE}, #{disabledate,jdbcType=DATE}, #{islocked,jdbcType=TINYINT},
       #{pkPsndoc,jdbcType=INTEGER}, #{doctype,jdbcType=INTEGER}, #{usertype,jdbcType=INTEGER}, 
       #{pkUsergroup,jdbcType=DATE}, #{enablestate,jdbcType=TINYINT}, #{note,jdbcType=VARCHAR}, 
       #{creator,jdbcType=INTEGER}, #{creationtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER}, 

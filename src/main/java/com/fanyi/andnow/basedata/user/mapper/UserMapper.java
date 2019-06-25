@@ -3,9 +3,17 @@ package com.fanyi.andnow.basedata.user.mapper;
 import com.fanyi.andnow.common.vo.basedata.UserVO;
 import com.fanyi.andnow.basedata.user.service.UserExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
-
+/**
+ * 用户映射关系
+ *
+ * @author wangyds
+ * @date 2019/6/25
+ */
+@Mapper
 public interface UserMapper {
     int countByExample(UserExample example);
 

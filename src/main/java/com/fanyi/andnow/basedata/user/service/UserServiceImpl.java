@@ -1,7 +1,7 @@
 package com.fanyi.andnow.basedata.user.service;
 
 import com.fanyi.andnow.basedata.user.mapper.UserMapper;
-import com.fanyi.andnow.common.vo.UserVO;
+import com.fanyi.andnow.common.vo.basedata.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
