@@ -1,6 +1,6 @@
 package com.fanyi.andnow.organization.department.mapper;
 
-import com.fanyi.andnow.common.vo.organization.DepartmentVO;
+import com.fanyi.andnow.common.vo.organization.Department;
 import com.fanyi.andnow.organization.department.service.DepartmentExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -12,19 +12,19 @@ public interface DepartmentMapper {
 
     int deleteByPrimaryKey(Integer pkDept);
 
-    int insert(DepartmentVO record);
+    int insert(Department record);
 
-    int insertSelective(DepartmentVO record);
+    int insertSelective(Department record);
 
-    List<DepartmentVO> selectByExample(DepartmentExample example);
+    List<Department> selectByExample(DepartmentExample example);
 
-    DepartmentVO selectByPrimaryKey(Integer pkDept);
+    Department selectByPrimaryKey(Integer pkDept);
 
-    int updateByExampleSelective(@Param("record") DepartmentVO record, @Param("example") DepartmentExample example);
+    int updateByExampleSelective(@Param("record") Department record, @Param("example") DepartmentExample example);
 
-    int updateByExample(@Param("record") DepartmentVO record, @Param("example") DepartmentExample example);
+    int updateByExample(@Param("record") Department record, @Param("example") DepartmentExample example);
 
-    int updateByPrimaryKeySelective(DepartmentVO record);
+    int updateByPrimaryKeySelective(Department record);
 
-    int updateByPrimaryKey(DepartmentVO record);
+    int updateByPrimaryKey(Department record);
 }

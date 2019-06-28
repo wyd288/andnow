@@ -10,7 +10,7 @@ import java.util.Date;
  * @date 2019/6/25
  */
 @Data
-public class UsergroupVO {
+public class Usergroup {
     private Integer pkUsergroup;
 
     private String code;

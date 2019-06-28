@@ -1,6 +1,6 @@
 package com.fanyi.andnow.basedata.user.service;
 
-import com.fanyi.andnow.common.vo.basedata.UserVO;
+import com.fanyi.andnow.common.vo.basedata.User;
 
 /**
  * 用户服务层
@@ -14,13 +14,26 @@ public interface UserService {
      * 获取所有用户
      * @return
      */
-    UserVO getUser();
+    User getUser();
 
     /**
      * 添加用户
-     * @param userVO
+     * @param user
      * @return int （大于0成功，小于0失败。）
      */
-    int insertUser(UserVO userVO);
+    int addUser(User user);
+
+    /**
+     * 获取用户数量
+     * @return
+     */
+    int getUserCount();
+
+    /**
+     * 保存用户
+     * @param user  用户
+     * @return
+     */
+    int saveUser(User user);
 
 }

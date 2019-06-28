@@ -10,7 +10,7 @@ import java.util.Date;
  * @date 2019/6/25
  */
 @Data
-public class PsndocVO {
+public class Psndoc {
     private Integer pkPsndoc;
 
     private Integer pkGroup;

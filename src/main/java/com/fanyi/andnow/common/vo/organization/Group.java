@@ -4,14 +4,14 @@ import lombok.Data;
 
 import java.util.Date;
 /**
- * 部门实体类
+ * 集团实体类
  *
  * @author wangyds
  * @date 2019/6/25
  */
 @Data
-public class DepartmentVO {
-    private Integer pkDept;
+public class Group {
+    private Integer pkGroup;
 
     private String code;
 
@@ -23,23 +23,19 @@ public class DepartmentVO {
 
     private String shortname;
 
-    private Integer pkGroup;
-
-    private Integer pkOrg;
-
     private Integer pkSuperior;
 
-    private Integer depttype;
-
-    private Integer principal;
-
-    private String tel;
-
-    private String address;
+    private String service;
 
     private String introduction;
 
     private String countryarea;
+
+    private String address;
+
+    private String tel;
+
+    private String fax;
 
     private Date establishdate;
 
@@ -47,7 +43,9 @@ public class DepartmentVO {
 
     private String ename;
 
-    private Date cancledate;
+    private Integer pkCountry;
+
+    private Integer pkTimezone;
 
     private Byte enablestate;
 
@@ -64,5 +62,6 @@ public class DepartmentVO {
     private Byte dr;
 
     private Date ts;
+
 
 }

@@ -10,7 +10,7 @@ import java.util.Date;
  * @date 2019/6/25
  */
 @Data
-public class PsnjobVO {
+public class Psnjob {
     private Integer pkPsnjob;
 
     private Integer pkGroup;

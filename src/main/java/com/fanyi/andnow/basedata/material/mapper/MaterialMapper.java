@@ -1,6 +1,6 @@
 package com.fanyi.andnow.basedata.material.mapper;
 
-import com.fanyi.andnow.common.vo.basedata.MaterialVO;
+import com.fanyi.andnow.common.vo.basedata.Material;
 import com.fanyi.andnow.basedata.material.service.MaterialExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -12,19 +12,19 @@ public interface MaterialMapper {
 
     int deleteByPrimaryKey(Integer pkMaterial);
 
-    int insert(MaterialVO record);
+    int insert(Material record);
 
-    int insertSelective(MaterialVO record);
+    int insertSelective(Material record);
 
-    List<MaterialVO> selectByExample(MaterialExample example);
+    List<Material> selectByExample(MaterialExample example);
 
-    MaterialVO selectByPrimaryKey(Integer pkMaterial);
+    Material selectByPrimaryKey(Integer pkMaterial);
 
-    int updateByExampleSelective(@Param("record") MaterialVO record, @Param("example") MaterialExample example);
+    int updateByExampleSelective(@Param("record") Material record, @Param("example") MaterialExample example);
 
-    int updateByExample(@Param("record") MaterialVO record, @Param("example") MaterialExample example);
+    int updateByExample(@Param("record") Material record, @Param("example") MaterialExample example);
 
-    int updateByPrimaryKeySelective(MaterialVO record);
+    int updateByPrimaryKeySelective(Material record);
 
-    int updateByPrimaryKey(MaterialVO record);
+    int updateByPrimaryKey(Material record);
 }

@@ -1,12 +1,11 @@
 package com.fanyi.andnow.basedata.user.mapper;
 
-import com.fanyi.andnow.common.vo.basedata.UserVO;
+import com.fanyi.andnow.common.vo.basedata.User;
 import com.fanyi.andnow.basedata.user.service.UserExample;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Update;
+
 /**
  * 用户映射关系
  *
@@ -15,25 +14,45 @@ import org.apache.ibatis.annotations.Update;
  */
 @Mapper
 public interface UserMapper {
-    int countByExample(UserExample example);
+    /**
+     * 根据主键删除用户
+     * @param pkUser  用户主键
+     * @return
+     */
+    int deleteUserByPrimaryKey(Integer pkUser);
 
-    int deleteByExample(UserExample example);
+    /**
+     * 物理删除已逻辑删除的数据
+     * @return
+     */
+    int clearDeletedData();
 
-    int deleteByPrimaryKey(Integer pkUser);
+    /**
+     * 新增用户
+     * @param user  用户
+     * @return
+     */
+    int insertUser(User user);
 
-    int insert(UserVO record);
+    /**
+     * 根据主键选择用户
+     * @param pkUser  用户主键
+     * @return
+     */
+    User selectUserByPrimaryKey(Integer pkUser);
 
-    int insertSelective(UserVO record);
+    /**
+     * 根据主键更新用户
+     * @param user 用户
+     * @return
+     */
+    int updateUserByPrimaryKey(User user);
 
-    List<UserVO> selectByExample(UserExample example);
+    /**
+     * 查询用户数量
+     * @return
+     */
+    int selectUserCount();
 
-    UserVO selectByPrimaryKey(Integer pkUser);
 
-    int updateByExampleSelective(@Param("record") UserVO record, @Param("example") UserExample example);
-
-    int updateByExample(@Param("record") UserVO record, @Param("example") UserExample example);
-
-    int updateByPrimaryKeySelective(UserVO record);
-
-    int updateByPrimaryKey(UserVO record);
 }

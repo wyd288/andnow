@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.fanyi.andnow.basedata.psnjob.mapper.PsnjobMapper" >
-  <resultMap id="BaseResultMap" type="com.fanyi.andnow.common.vo.basedata.PsnjobVO" >
+  <resultMap id="BaseResultMap" type="com.fanyi.andnow.common.vo.basedata.Psnjob" >
     <id column="pk_psnjob" property="pkPsnjob" jdbcType="INTEGER" />
     <result column="pk_group" property="pkGroup" jdbcType="INTEGER" />
     <result column="pk_org" property="pkOrg" jdbcType="INTEGER" />
@@ -117,7 +117,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fanyi.andnow.common.vo.basedata.PsnjobVO" >
+  <insert id="insert" parameterType="com.fanyi.andnow.common.vo.basedata.Psnjob" >
     insert into bd_psnjob (pk_psnjob, pk_group, pk_org, 
       psncode, pk_psncl, pk_dept, 
       startdutydate, enddutydate, pk_job, 
@@ -133,7 +133,7 @@
       #{creationtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER}, #{modifiedtime,jdbcType=TIMESTAMP}, 
       #{dr,jdbcType=TINYINT}, #{ts,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.fanyi.andnow.common.vo.basedata.PsnjobVO" >
+  <insert id="insertSelective" parameterType="com.fanyi.andnow.common.vo.basedata.Psnjob" >
     insert into bd_psnjob
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="pkPsnjob != null" >
@@ -360,7 +360,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.common.vo.basedata.PsnjobVO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.common.vo.basedata.Psnjob" >
     update bd_psnjob
     <set >
       <if test="pkGroup != null" >
@@ -423,7 +423,7 @@
     </set>
     where pk_psnjob = #{pkPsnjob,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.basedata.PsnjobVO" >
+  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.basedata.Psnjob" >
     update bd_psnjob
     set pk_group = #{pkGroup,jdbcType=INTEGER},
       pk_org = #{pkOrg,jdbcType=INTEGER},

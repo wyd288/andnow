@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.fanyi.andnow.organization.department.mapper.DepartmentMapper" >
-  <resultMap id="BaseResultMap" type="com.fanyi.andnow.common.vo.organization.DepartmentVO" >
+  <resultMap id="BaseResultMap" type="com.fanyi.andnow.common.vo.organization.Department" >
     <id column="pk_dept" property="pkDept" jdbcType="INTEGER" />
     <result column="code" property="code" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -125,7 +125,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fanyi.andnow.common.vo.organization.DepartmentVO" >
+  <insert id="insert" parameterType="com.fanyi.andnow.common.vo.organization.Department" >
     insert into org_dept (pk_dept, code, name, 
       mencode, innercode, shortname, 
       pk_group, pk_org, pk_superior, 
@@ -147,7 +147,7 @@
       #{modifiedtime,jdbcType=TIMESTAMP}, #{dr,jdbcType=TINYINT}, #{ts,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fanyi.andnow.common.vo.organization.DepartmentVO" >
+  <insert id="insertSelective" parameterType="com.fanyi.andnow.common.vo.organization.Department" >
     insert into org_dept
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="pkDept != null" >
@@ -444,7 +444,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.common.vo.organization.DepartmentVO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.common.vo.organization.Department" >
     update org_dept
     <set >
       <if test="code != null" >
@@ -528,7 +528,7 @@
     </set>
     where pk_dept = #{pkDept,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.organization.DepartmentVO" >
+  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.organization.Department" >
     update org_dept
     set code = #{code,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},

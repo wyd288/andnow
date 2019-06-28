@@ -1,6 +1,6 @@
 package com.fanyi.andnow.basedata.psnjob.mapper;
 
-import com.fanyi.andnow.common.vo.basedata.PsnjobVO;
+import com.fanyi.andnow.common.vo.basedata.Psnjob;
 import com.fanyi.andnow.basedata.psnjob.service.PsnjobExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -12,19 +12,19 @@ public interface PsnjobMapper {
 
     int deleteByPrimaryKey(Integer pkPsnjob);
 
-    int insert(PsnjobVO record);
+    int insert(Psnjob record);
 
-    int insertSelective(PsnjobVO record);
+    int insertSelective(Psnjob record);
 
-    List<PsnjobVO> selectByExample(PsnjobExample example);
+    List<Psnjob> selectByExample(PsnjobExample example);
 
-    PsnjobVO selectByPrimaryKey(Integer pkPsnjob);
+    Psnjob selectByPrimaryKey(Integer pkPsnjob);
 
-    int updateByExampleSelective(@Param("record") PsnjobVO record, @Param("example") PsnjobExample example);
+    int updateByExampleSelective(@Param("record") Psnjob record, @Param("example") PsnjobExample example);
 
-    int updateByExample(@Param("record") PsnjobVO record, @Param("example") PsnjobExample example);
+    int updateByExample(@Param("record") Psnjob record, @Param("example") PsnjobExample example);
 
-    int updateByPrimaryKeySelective(PsnjobVO record);
+    int updateByPrimaryKeySelective(Psnjob record);
 
-    int updateByPrimaryKey(PsnjobVO record);
+    int updateByPrimaryKey(Psnjob record);
 }

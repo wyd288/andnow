@@ -1,7 +1,7 @@
 package com.fanyi.andnow.basedata.user.service;
 
 import com.fanyi.andnow.basedata.user.mapper.UserMapper;
-import com.fanyi.andnow.common.vo.basedata.UserVO;
+import com.fanyi.andnow.common.vo.basedata.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +19,21 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public UserVO getUser() {
+    public User getUser() {
 
-        return userMapper.selectByPrimaryKey(1);
+        return userMapper.selectUserByPrimaryKey(1);
     }
 
     @Override
-    public int insertUser(UserVO userVO) {
-        return userMapper.insertSelective(userVO);
+    public int addUser(User user) {
+        return userMapper.insertUser(user);
     }
+
+    @Override
+    public int getUserCount() {
+        return userMapper.selectUserCount();
+    }
+
+
+
 }

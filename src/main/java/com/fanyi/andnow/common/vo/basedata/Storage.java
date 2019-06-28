@@ -4,14 +4,14 @@ import lombok.Data;
 
 import java.util.Date;
 /**
- * 用户实体类
+ * 仓库实体类
  *
  * @author wangyds
  * @date 2019/6/25
  */
 @Data
-public class UserVO {
-    private Integer pkUser;
+public class Storage {
+    private Integer pkStorage;
 
     private Integer pkGroup;
 
@@ -21,27 +21,31 @@ public class UserVO {
 
     private String name;
 
-    private String password;
+    private String version;
 
-    private Byte pwdlevel;
+    private String address;
 
-    private String pwdparam;
+    private Integer principal;
 
-    private Byte identityverifycode;
+    private String phone;
 
-    private Date enabledate;
+    private Byte csflag;
 
-    private Date disabledate;
+    private Byte isgubstore;
 
-    private Byte islocked;
+    private Byte isprostore;
 
-    private Integer pkPsndoc;
+    private Byte isonthewaystore;
 
-    private Integer doctype;
+    private Byte isdirectstore;
 
-    private Integer usertype;
+    private Byte isagentstore;
 
-    private Date pkUsergroup;
+    private Byte isretailstore;
+
+    private Byte isshopstore;
+
+    private Byte iskptaxstore;
 
     private Byte enablestate;
 
@@ -58,6 +62,5 @@ public class UserVO {
     private Byte dr;
 
     private Date ts;
-
 
 }

@@ -2,7 +2,7 @@ package com.fanyi.andnow.basedata.user.controller;
 
 
 import com.fanyi.andnow.basedata.user.service.UserService;
-import com.fanyi.andnow.common.vo.basedata.UserVO;
+import com.fanyi.andnow.common.vo.basedata.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,23 +25,27 @@ public class UserController {
      * @param res
      * @return
      */
-    @RequestMapping(value="getUser",method= RequestMethod.GET)
-    public UserVO getUsers(HttpServletResponse res){
-        UserVO user ;
+    @GetMapping(value="/getUser")
+    public User getUsers(HttpServletResponse res){
+        User user ;
         user = userService.getUser();
         return user;
     }
 
     /**
      * 添加用户
-     * @param userVO（用户）
+     * @param user（用户）
      * @return int （大于0成功，小于0失败。）
      */
-    @PostMapping("/insertUser")
-    public int insertUserVo(@RequestBody UserVO userVO){
-        return userService.insertUser(userVO);
+    @PostMapping("/addUser")
+    public int addUserVo(@RequestBody User user){
+        return userService.addUser(user);
     }
 
+    @GetMapping("/getUserCount")
+    public int getUserCount(){
+        return userService.getUserCount();
+    }
 
 
 }

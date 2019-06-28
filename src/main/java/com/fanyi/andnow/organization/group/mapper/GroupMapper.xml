@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.fanyi.andnow.organization.group.mapper.GroupMapper" >
-  <resultMap id="BaseResultMap" type="com.fanyi.andnow.common.vo.organization.GroupVO" >
+  <resultMap id="BaseResultMap" type="com.fanyi.andnow.common.vo.organization.Group" >
     <id column="pk_group" property="pkGroup" jdbcType="INTEGER" />
     <result column="code" property="code" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -123,7 +123,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fanyi.andnow.common.vo.organization.GroupVO" >
+  <insert id="insert" parameterType="com.fanyi.andnow.common.vo.organization.Group" >
     insert into org_group (pk_group, code, name, 
       mencode, innercode, shortname, 
       pk_superior, service, introduction, 
@@ -143,7 +143,7 @@
       #{creationtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER}, #{modifiedtime,jdbcType=TIMESTAMP}, 
       #{dr,jdbcType=TINYINT}, #{ts,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.fanyi.andnow.common.vo.organization.GroupVO" >
+  <insert id="insertSelective" parameterType="com.fanyi.andnow.common.vo.organization.Group" >
     insert into org_group
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="pkGroup != null" >
@@ -430,7 +430,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.common.vo.organization.GroupVO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.common.vo.organization.Group" >
     update org_group
     <set >
       <if test="code != null" >
@@ -511,7 +511,7 @@
     </set>
     where pk_group = #{pkGroup,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.organization.GroupVO" >
+  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.organization.Group" >
     update org_group
     set code = #{code,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},

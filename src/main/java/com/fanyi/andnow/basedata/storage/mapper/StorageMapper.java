@@ -1,6 +1,6 @@
 package com.fanyi.andnow.basedata.storage.mapper;
 
-import com.fanyi.andnow.common.vo.basedata.StorageVO;
+import com.fanyi.andnow.common.vo.basedata.Storage;
 import com.fanyi.andnow.basedata.storage.service.StorageExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -12,19 +12,19 @@ public interface StorageMapper {
 
     int deleteByPrimaryKey(Integer pkStorage);
 
-    int insert(StorageVO record);
+    int insert(Storage record);
 
-    int insertSelective(StorageVO record);
+    int insertSelective(Storage record);
 
-    List<StorageVO> selectByExample(StorageExample example);
+    List<Storage> selectByExample(StorageExample example);
 
-    StorageVO selectByPrimaryKey(Integer pkStorage);
+    Storage selectByPrimaryKey(Integer pkStorage);
 
-    int updateByExampleSelective(@Param("record") StorageVO record, @Param("example") StorageExample example);
+    int updateByExampleSelective(@Param("record") Storage record, @Param("example") StorageExample example);
 
-    int updateByExample(@Param("record") StorageVO record, @Param("example") StorageExample example);
+    int updateByExample(@Param("record") Storage record, @Param("example") StorageExample example);
 
-    int updateByPrimaryKeySelective(StorageVO record);
+    int updateByPrimaryKeySelective(Storage record);
 
-    int updateByPrimaryKey(StorageVO record);
+    int updateByPrimaryKey(Storage record);
 }

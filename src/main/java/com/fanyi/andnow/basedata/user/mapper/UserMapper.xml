@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.fanyi.andnow.basedata.user.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.fanyi.andnow.common.vo.basedata.UserVO" >
+  <resultMap id="BaseResultMap" type="com.fanyi.andnow.common.vo.basedata.User" >
     <id column="pk_user" property="pkUser" jdbcType="INTEGER" />
     <result column="pk_group" property="pkGroup" jdbcType="INTEGER" />
     <result column="pk_org" property="pkOrg" jdbcType="INTEGER" />
@@ -27,487 +27,123 @@
     <result column="dr" property="dr" jdbcType="TINYINT" />
     <result column="ts" property="ts" jdbcType="TIMESTAMP" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
+
   <sql id="Base_Column_List" >
     pk_user, pk_group, pk_org, code, name, password, pwdlevel, pwdparam, identityverifycode, 
     enabledate, disabledate, islocked, pk_psndoc, doctype, usertype, pk_usergroup, enablestate, 
     note, creator, creationtime, modifier, modifiedtime, dr, ts
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fanyi.andnow.basedata.user.service.UserExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    'true' as QUERYID,
-    <include refid="Base_Column_List" />
-    from bd_user
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
+
+  <select id="selectUserCount" resultType="java.lang.Integer">
+    select count(*) from bd_user where nvl(dr,0) = 0
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+
+  <select id="selectUserByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from bd_user
-    where pk_user = #{pkUser,jdbcType=INTEGER}
+    where pk_user = #{pkUser,jdbcType=INTEGER} and nvl(dr,0) = 0
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+
+  <delete id="clearDeletedData" parameterType="java.lang.Integer" >
     delete from bd_user
+    where dr = 1
+  </delete>
+
+  <update id="deleteUserByPrimaryKey" parameterType="java.lang.Integer" >
+    update bd_user
+    <set>
+      dr = 1
+    </set>
     where pk_user = #{pkUser,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.fanyi.andnow.basedata.user.service.UserExample" >
-    delete from bd_user
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.fanyi.andnow.common.vo.basedata.UserVO" >
-    insert into bd_user (pk_user, pk_group, pk_org, 
-      code, name, password, 
-      pwdlevel, pwdparam, identityverifycode, 
-      enabledate, disabledate, islocked, 
-      pk_psndoc, doctype, usertype, 
-      pk_usergroup, enablestate, note, 
-      creator, creationtime, modifier, 
-      modifiedtime, dr, ts
-      )
-    values (#{pkUser,jdbcType=INTEGER}, #{pkGroup,jdbcType=INTEGER}, #{pkOrg,jdbcType=INTEGER}, 
-      #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{pwdlevel,jdbcType=TINYINT}, #{pwdparam,jdbcType=VARCHAR}, #{identityverifycode,jdbcType=TINYINT}, 
-      #{enabledate,jdbcType=DATE}, #{disabledate,jdbcType=DATE}, #{islocked,jdbcType=TINYINT},
-      #{pkPsndoc,jdbcType=INTEGER}, #{doctype,jdbcType=INTEGER}, #{usertype,jdbcType=INTEGER}, 
-      #{pkUsergroup,jdbcType=DATE}, #{enablestate,jdbcType=TINYINT}, #{note,jdbcType=VARCHAR}, 
-      #{creator,jdbcType=INTEGER}, #{creationtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER}, 
-      #{modifiedtime,jdbcType=TIMESTAMP}, #{dr,jdbcType=TINYINT}, #{ts,jdbcType=TIMESTAMP}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.fanyi.andnow.common.vo.basedata.UserVO" >
+  </update>
+
+
+  <insert id="insertUser" parameterType="com.fanyi.andnow.common.vo.basedata.User" >
     insert into bd_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="pkUser != null" >
-        pk_user,
-      </if>
-      <if test="pkGroup != null" >
-        pk_group,
-      </if>
-      <if test="pkOrg != null" >
-        pk_org,
-      </if>
-      <if test="code != null" >
-        code,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="password != null" >
-        password,
-      </if>
-      <if test="pwdlevel != null" >
-        pwdlevel,
-      </if>
-      <if test="pwdparam != null" >
-        pwdparam,
-      </if>
-      <if test="identityverifycode != null" >
-        identityverifycode,
-      </if>
-      <if test="enabledate != null" >
-        enabledate,
-      </if>
-      <if test="disabledate != null" >
-        disabledate,
-      </if>
-      <if test="islocked != null" >
-        islocked,
-      </if>
-      <if test="pkPsndoc != null" >
-        pk_psndoc,
-      </if>
-      <if test="doctype != null" >
-        doctype,
-      </if>
-      <if test="usertype != null" >
-        usertype,
-      </if>
-      <if test="pkUsergroup != null" >
-        pk_usergroup,
-      </if>
-      <if test="enablestate != null" >
-        enablestate,
-      </if>
-      <if test="note != null" >
-        note,
-      </if>
-      <if test="creator != null" >
-        creator,
-      </if>
-      <if test="creationtime != null" >
-        creationtime,
-      </if>
-      <if test="modifier != null" >
-        modifier,
-      </if>
-      <if test="modifiedtime != null" >
-        modifiedtime,
-      </if>
-      <if test="dr != null" >
-        dr,
-      </if>
-      <if test="ts != null" >
-        ts,
-      </if>
+      <if test="pkUser != null" >pk_user,</if>
+      <if test="pkGroup != null" >pk_group,</if>
+      <if test="pkOrg != null" >pk_org,</if>
+      <if test="code != null" >code,</if>
+      <if test="name != null" >name,</if>
+      <if test="password != null" >password,</if>
+      <if test="pwdlevel != null" >pwdlevel,</if>
+      <if test="pwdparam != null" >pwdparam,</if>
+      <if test="identityverifycode != null" >identityverifycode,</if>
+      <if test="enabledate != null" >enabledate,</if>
+      <if test="disabledate != null" >disabledate,</if>
+      <if test="islocked != null" >islocked,</if>
+      <if test="pkPsndoc != null" >pk_psndoc,</if>
+      <if test="doctype != null" >doctype,</if>
+      <if test="usertype != null" >usertype,</if>
+      <if test="pkUsergroup != null" >pk_usergroup,</if>
+      <if test="enablestate != null" >enablestate,</if>
+      <if test="note != null" >note,</if>
+      <if test="creator != null" >creator,</if>
+      <if test="creationtime != null" >creationtime,</if>
+      <if test="modifier != null" >modifier,</if>
+      <if test="modifiedtime != null" >modifiedtime,</if>
+      <if test="dr != null" >dr,</if>
+      <if test="ts != null" >ts,</if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="pkUser != null" >
-        #{pkUser,jdbcType=INTEGER},
-      </if>
-      <if test="pkGroup != null" >
-        #{pkGroup,jdbcType=INTEGER},
-      </if>
-      <if test="pkOrg != null" >
-        #{pkOrg,jdbcType=INTEGER},
-      </if>
-      <if test="code != null" >
-        #{code,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="pwdlevel != null" >
-        #{pwdlevel,jdbcType=TINYINT},
-      </if>
-      <if test="pwdparam != null" >
-        #{pwdparam,jdbcType=VARCHAR},
-      </if>
-      <if test="identityverifycode != null" >
-        #{identityverifycode,jdbcType=TINYINT},
-      </if>
-      <if test="enabledate != null" >
-        #{enabledate,jdbcType=DATE},
-      </if>
-      <if test="disabledate != null" >
-        #{disabledate,jdbcType=DATE},
-      </if>
-      <if test="islocked != null" >
-        #{islocked,jdbcType=TINYINT},
-      </if>
-      <if test="pkPsndoc != null" >
-        #{pkPsndoc,jdbcType=INTEGER},
-      </if>
-      <if test="doctype != null" >
-        #{doctype,jdbcType=INTEGER},
-      </if>
-      <if test="usertype != null" >
-        #{usertype,jdbcType=INTEGER},
-      </if>
-      <if test="pkUsergroup != null" >
-        #{pkUsergroup,jdbcType=DATE},
-      </if>
-      <if test="enablestate != null" >
-        #{enablestate,jdbcType=TINYINT},
-      </if>
-      <if test="note != null" >
-        #{note,jdbcType=VARCHAR},
-      </if>
-      <if test="creator != null" >
-        #{creator,jdbcType=INTEGER},
-      </if>
-      <if test="creationtime != null" >
-        #{creationtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifier != null" >
-        #{modifier,jdbcType=INTEGER},
-      </if>
-      <if test="modifiedtime != null" >
-        #{modifiedtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="dr != null" >
-        #{dr,jdbcType=TINYINT},
-      </if>
-      <if test="ts != null" >
-        #{ts,jdbcType=TIMESTAMP},
-      </if>
+      <if test="pkUser != null" >#{pkUser,jdbcType=INTEGER},</if>
+      <if test="pkGroup != null" >#{pkGroup,jdbcType=INTEGER},</if>
+      <if test="pkOrg != null" >#{pkOrg,jdbcType=INTEGER},</if>
+      <if test="code != null" >#{code,jdbcType=VARCHAR},</if>
+      <if test="name != null" >#{name,jdbcType=VARCHAR},</if>
+      <if test="password != null" >#{password,jdbcType=VARCHAR},</if>
+      <if test="pwdlevel != null" >#{pwdlevel,jdbcType=TINYINT},</if>
+      <if test="pwdparam != null" >#{pwdparam,jdbcType=VARCHAR},</if>
+      <if test="identityverifycode != null" >#{identityverifycode,jdbcType=TINYINT},</if>
+      <if test="enabledate != null" >#{enabledate,jdbcType=DATE},</if>
+      <if test="disabledate != null" >#{disabledate,jdbcType=DATE},</if>
+      <if test="islocked != null" >#{islocked,jdbcType=TINYINT},</if>
+      <if test="pkPsndoc != null" >#{pkPsndoc,jdbcType=INTEGER},</if>
+      <if test="doctype != null" >#{doctype,jdbcType=INTEGER},</if>
+      <if test="usertype != null" >#{usertype,jdbcType=INTEGER},</if>
+      <if test="pkUsergroup != null" >#{pkUsergroup,jdbcType=DATE},</if>
+      <if test="enablestate != null" >#{enablestate,jdbcType=TINYINT},</if>
+      <if test="note != null" >#{note,jdbcType=VARCHAR},</if>
+      <if test="creator != null" >#{creator,jdbcType=INTEGER},</if>
+      <if test="creationtime != null" >#{creationtime,jdbcType=TIMESTAMP},</if>
+      <if test="modifier != null" >#{modifier,jdbcType=INTEGER},</if>
+      <if test="modifiedtime != null" >#{modifiedtime,jdbcType=TIMESTAMP},</if>
+      <if test="dr != null" >#{dr,jdbcType=TINYINT},</if>
+      <if test="ts != null" >#{ts,jdbcType=TIMESTAMP},</if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fanyi.andnow.basedata.user.service.UserExample" resultType="java.lang.Integer" >
-    select count(*) from bd_user
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+
+
+  <update id="updateUserByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.basedata.User" >
     update bd_user
     <set >
-      <if test="record.pkUser != null" >
-        pk_user = #{record.pkUser,jdbcType=INTEGER},
-      </if>
-      <if test="record.pkGroup != null" >
-        pk_group = #{record.pkGroup,jdbcType=INTEGER},
-      </if>
-      <if test="record.pkOrg != null" >
-        pk_org = #{record.pkOrg,jdbcType=INTEGER},
-      </if>
-      <if test="record.code != null" >
-        code = #{record.code,jdbcType=VARCHAR},
-      </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
-      </if>
-      <if test="record.password != null" >
-        password = #{record.password,jdbcType=VARCHAR},
-      </if>
-      <if test="record.pwdlevel != null" >
-        pwdlevel = #{record.pwdlevel,jdbcType=TINYINT},
-      </if>
-      <if test="record.pwdparam != null" >
-        pwdparam = #{record.pwdparam,jdbcType=VARCHAR},
-      </if>
-      <if test="record.identityverifycode != null" >
-        identityverifycode = #{record.identityverifycode,jdbcType=TINYINT},
-      </if>
-      <if test="record.enabledate != null" >
-        enabledate = #{record.enabledate,jdbcType=DATE},
-      </if>
-      <if test="record.disabledate != null" >
-        disabledate = #{record.disabledate,jdbcType=DATE},
-      </if>
-      <if test="record.islocked != null" >
-        islocked = #{record.islocked,jdbcType=TINYINT},
-      </if>
-      <if test="record.pkPsndoc != null" >
-        pk_psndoc = #{record.pkPsndoc,jdbcType=INTEGER},
-      </if>
-      <if test="record.doctype != null" >
-        doctype = #{record.doctype,jdbcType=INTEGER},
-      </if>
-      <if test="record.usertype != null" >
-        usertype = #{record.usertype,jdbcType=INTEGER},
-      </if>
-      <if test="record.pkUsergroup != null" >
-        pk_usergroup = #{record.pkUsergroup,jdbcType=DATE},
-      </if>
-      <if test="record.enablestate != null" >
-        enablestate = #{record.enablestate,jdbcType=TINYINT},
-      </if>
-      <if test="record.note != null" >
-        note = #{record.note,jdbcType=VARCHAR},
-      </if>
-      <if test="record.creator != null" >
-        creator = #{record.creator,jdbcType=INTEGER},
-      </if>
-      <if test="record.creationtime != null" >
-        creationtime = #{record.creationtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.modifier != null" >
-        modifier = #{record.modifier,jdbcType=INTEGER},
-      </if>
-      <if test="record.modifiedtime != null" >
-        modifiedtime = #{record.modifiedtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.dr != null" >
-        dr = #{record.dr,jdbcType=TINYINT},
-      </if>
-      <if test="record.ts != null" >
-        ts = #{record.ts,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update bd_user
-    set pk_user = #{record.pkUser,jdbcType=INTEGER},
-      pk_group = #{record.pkGroup,jdbcType=INTEGER},
-      pk_org = #{record.pkOrg,jdbcType=INTEGER},
-      code = #{record.code,jdbcType=VARCHAR},
-      name = #{record.name,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
-      pwdlevel = #{record.pwdlevel,jdbcType=TINYINT},
-      pwdparam = #{record.pwdparam,jdbcType=VARCHAR},
-      identityverifycode = #{record.identityverifycode,jdbcType=TINYINT},
-      enabledate = #{record.enabledate,jdbcType=DATE},
-      disabledate = #{record.disabledate,jdbcType=DATE},
-      islocked = #{record.islocked,jdbcType=TINYINT},
-      pk_psndoc = #{record.pkPsndoc,jdbcType=INTEGER},
-      doctype = #{record.doctype,jdbcType=INTEGER},
-      usertype = #{record.usertype,jdbcType=INTEGER},
-      pk_usergroup = #{record.pkUsergroup,jdbcType=DATE},
-      enablestate = #{record.enablestate,jdbcType=TINYINT},
-      note = #{record.note,jdbcType=VARCHAR},
-      creator = #{record.creator,jdbcType=INTEGER},
-      creationtime = #{record.creationtime,jdbcType=TIMESTAMP},
-      modifier = #{record.modifier,jdbcType=INTEGER},
-      modifiedtime = #{record.modifiedtime,jdbcType=TIMESTAMP},
-      dr = #{record.dr,jdbcType=TINYINT},
-      ts = #{record.ts,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.common.vo.basedata.UserVO" >
-    update bd_user
-    <set >
-      <if test="pkGroup != null" >
-        pk_group = #{pkGroup,jdbcType=INTEGER},
-      </if>
-      <if test="pkOrg != null" >
-        pk_org = #{pkOrg,jdbcType=INTEGER},
-      </if>
-      <if test="code != null" >
-        code = #{code,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="pwdlevel != null" >
-        pwdlevel = #{pwdlevel,jdbcType=TINYINT},
-      </if>
-      <if test="pwdparam != null" >
-        pwdparam = #{pwdparam,jdbcType=VARCHAR},
-      </if>
-      <if test="identityverifycode != null" >
-        identityverifycode = #{identityverifycode,jdbcType=TINYINT},
-      </if>
-      <if test="enabledate != null" >
-        enabledate = #{enabledate,jdbcType=DATE},
-      </if>
-      <if test="disabledate != null" >
-        disabledate = #{disabledate,jdbcType=DATE},
-      </if>
-      <if test="islocked != null" >
-        islocked = #{islocked,jdbcType=TINYINT},
-      </if>
-      <if test="pkPsndoc != null" >
-        pk_psndoc = #{pkPsndoc,jdbcType=INTEGER},
-      </if>
-      <if test="doctype != null" >
-        doctype = #{doctype,jdbcType=INTEGER},
-      </if>
-      <if test="usertype != null" >
-        usertype = #{usertype,jdbcType=INTEGER},
-      </if>
-      <if test="pkUsergroup != null" >
-        pk_usergroup = #{pkUsergroup,jdbcType=DATE},
-      </if>
-      <if test="enablestate != null" >
-        enablestate = #{enablestate,jdbcType=TINYINT},
-      </if>
-      <if test="note != null" >
-        note = #{note,jdbcType=VARCHAR},
-      </if>
-      <if test="creator != null" >
-        creator = #{creator,jdbcType=INTEGER},
-      </if>
-      <if test="creationtime != null" >
-        creationtime = #{creationtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifier != null" >
-        modifier = #{modifier,jdbcType=INTEGER},
-      </if>
-      <if test="modifiedtime != null" >
-        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="dr != null" >
-        dr = #{dr,jdbcType=TINYINT},
-      </if>
-      <if test="ts != null" >
-        ts = #{ts,jdbcType=TIMESTAMP},
-      </if>
+      <if test="pkGroup != null" >pk_group = #{pkGroup,jdbcType=INTEGER},</if>
+      <if test="pkOrg != null" >pk_org = #{pkOrg,jdbcType=INTEGER},</if>
+      <if test="code != null" >code = #{code,jdbcType=VARCHAR},</if>
+      <if test="name != null" >name = #{name,jdbcType=VARCHAR},</if>
+      <if test="password != null" >password = #{password,jdbcType=VARCHAR},</if>
+      <if test="pwdlevel != null" >pwdlevel = #{pwdlevel,jdbcType=TINYINT},</if>
+      <if test="pwdparam != null" >pwdparam = #{pwdparam,jdbcType=VARCHAR},</if>
+      <if test="identityverifycode != null" >identityverifycode = #{identityverifycode,jdbcType=TINYINT},</if>
+      <if test="enabledate != null" >enabledate = #{enabledate,jdbcType=DATE},</if>
+      <if test="disabledate != null" >disabledate = #{disabledate,jdbcType=DATE},</if>
+      <if test="islocked != null" >islocked = #{islocked,jdbcType=TINYINT},</if>
+      <if test="pkPsndoc != null" >pk_psndoc = #{pkPsndoc,jdbcType=INTEGER},</if>
+      <if test="doctype != null" >doctype = #{doctype,jdbcType=INTEGER},</if>
+      <if test="usertype != null" >usertype = #{usertype,jdbcType=INTEGER},</if>
+      <if test="pkUsergroup != null" >pk_usergroup = #{pkUsergroup,jdbcType=DATE},</if>
+      <if test="enablestate != null" >enablestate = #{enablestate,jdbcType=TINYINT},</if>
+      <if test="note != null" >note = #{note,jdbcType=VARCHAR},</if>
+      <if test="creator != null" >creator = #{creator,jdbcType=INTEGER},</if>
+      <if test="creationtime != null" >creationtime = #{creationtime,jdbcType=TIMESTAMP},</if>
+      <if test="modifier != null" >modifier = #{modifier,jdbcType=INTEGER},</if>
+      <if test="modifiedtime != null" >modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},</if>
+      <if test="dr != null" >dr = #{dr,jdbcType=TINYINT},</if>
+      <if test="ts != null" >ts = #{ts,jdbcType=TIMESTAMP},</if>
     </set>
     where pk_user = #{pkUser,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.basedata.UserVO" >
-    update bd_user
-    set pk_group = #{pkGroup,jdbcType=INTEGER},
-      pk_org = #{pkOrg,jdbcType=INTEGER},
-      code = #{code,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      pwdlevel = #{pwdlevel,jdbcType=TINYINT},
-      pwdparam = #{pwdparam,jdbcType=VARCHAR},
-      identityverifycode = #{identityverifycode,jdbcType=TINYINT},
-      enabledate = #{enabledate,jdbcType=DATE},
-      disabledate = #{disabledate,jdbcType=DATE},
-      islocked = #{islocked,jdbcType=TINYINT},
-      pk_psndoc = #{pkPsndoc,jdbcType=INTEGER},
-      doctype = #{doctype,jdbcType=INTEGER},
-      usertype = #{usertype,jdbcType=INTEGER},
-      pk_usergroup = #{pkUsergroup,jdbcType=DATE},
-      enablestate = #{enablestate,jdbcType=TINYINT},
-      note = #{note,jdbcType=VARCHAR},
-      creator = #{creator,jdbcType=INTEGER},
-      creationtime = #{creationtime,jdbcType=TIMESTAMP},
-      modifier = #{modifier,jdbcType=INTEGER},
-      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
-      dr = #{dr,jdbcType=TINYINT},
-      ts = #{ts,jdbcType=TIMESTAMP}
-    where pk_user = #{pkUser,jdbcType=INTEGER}
-  </update>
+
 </mapper>

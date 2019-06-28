@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.fanyi.andnow.basedata.storage.mapper.StorageMapper" >
-  <resultMap id="BaseResultMap" type="com.fanyi.andnow.common.vo.basedata.StorageVO" >
+  <resultMap id="BaseResultMap" type="com.fanyi.andnow.common.vo.basedata.Storage" >
     <id column="pk_storage" property="pkStorage" jdbcType="INTEGER" />
     <result column="pk_group" property="pkGroup" jdbcType="INTEGER" />
     <result column="pk_org" property="pkOrg" jdbcType="INTEGER" />
@@ -124,7 +124,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fanyi.andnow.common.vo.basedata.StorageVO" >
+  <insert id="insert" parameterType="com.fanyi.andnow.common.vo.basedata.Storage" >
     insert into bd_storage (pk_storage, pk_group, pk_org, 
       code, name, version, 
       address, principal, phone, 
@@ -144,7 +144,7 @@
       #{creationtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER}, #{modifiedtime,jdbcType=TIMESTAMP}, 
       #{dr,jdbcType=TINYINT}, #{ts,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.fanyi.andnow.common.vo.basedata.StorageVO" >
+  <insert id="insertSelective" parameterType="com.fanyi.andnow.common.vo.basedata.Storage" >
     insert into bd_storage
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="pkStorage != null" >
@@ -431,7 +431,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.common.vo.basedata.StorageVO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.common.vo.basedata.Storage" >
     update bd_storage
     <set >
       <if test="pkGroup != null" >
@@ -512,7 +512,7 @@
     </set>
     where pk_storage = #{pkStorage,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.basedata.StorageVO" >
+  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.basedata.Storage" >
     update bd_storage
     set pk_group = #{pkGroup,jdbcType=INTEGER},
       pk_org = #{pkOrg,jdbcType=INTEGER},

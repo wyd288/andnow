@@ -1,6 +1,6 @@
 package com.fanyi.andnow.organization.group.mapper;
 
-import com.fanyi.andnow.common.vo.organization.GroupVO;
+import com.fanyi.andnow.common.vo.organization.Group;
 import com.fanyi.andnow.organization.group.service.GroupExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -12,19 +12,19 @@ public interface GroupMapper {
 
     int deleteByPrimaryKey(Integer pkGroup);
 
-    int insert(GroupVO record);
+    int insert(Group record);
 
-    int insertSelective(GroupVO record);
+    int insertSelective(Group record);
 
-    List<GroupVO> selectByExample(GroupExample example);
+    List<Group> selectByExample(GroupExample example);
 
-    GroupVO selectByPrimaryKey(Integer pkGroup);
+    Group selectByPrimaryKey(Integer pkGroup);
 
-    int updateByExampleSelective(@Param("record") GroupVO record, @Param("example") GroupExample example);
+    int updateByExampleSelective(@Param("record") Group record, @Param("example") GroupExample example);
 
-    int updateByExample(@Param("record") GroupVO record, @Param("example") GroupExample example);
+    int updateByExample(@Param("record") Group record, @Param("example") GroupExample example);
 
-    int updateByPrimaryKeySelective(GroupVO record);
+    int updateByPrimaryKeySelective(Group record);
 
-    int updateByPrimaryKey(GroupVO record);
+    int updateByPrimaryKey(Group record);
 }

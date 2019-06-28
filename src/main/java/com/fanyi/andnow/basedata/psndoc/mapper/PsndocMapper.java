@@ -1,6 +1,6 @@
 package com.fanyi.andnow.basedata.psndoc.mapper;
 
-import com.fanyi.andnow.common.vo.basedata.PsndocVO;
+import com.fanyi.andnow.common.vo.basedata.Psndoc;
 import com.fanyi.andnow.basedata.psndoc.service.PsndocExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -12,19 +12,19 @@ public interface PsndocMapper {
 
     int deleteByPrimaryKey(Integer pkPsndoc);
 
-    int insert(PsndocVO record);
+    int insert(Psndoc record);
 
-    int insertSelective(PsndocVO record);
+    int insertSelective(Psndoc record);
 
-    List<PsndocVO> selectByExample(PsndocExample example);
+    List<Psndoc> selectByExample(PsndocExample example);
 
-    PsndocVO selectByPrimaryKey(Integer pkPsndoc);
+    Psndoc selectByPrimaryKey(Integer pkPsndoc);
 
-    int updateByExampleSelective(@Param("record") PsndocVO record, @Param("example") PsndocExample example);
+    int updateByExampleSelective(@Param("record") Psndoc record, @Param("example") PsndocExample example);
 
-    int updateByExample(@Param("record") PsndocVO record, @Param("example") PsndocExample example);
+    int updateByExample(@Param("record") Psndoc record, @Param("example") PsndocExample example);
 
-    int updateByPrimaryKeySelective(PsndocVO record);
+    int updateByPrimaryKeySelective(Psndoc record);
 
-    int updateByPrimaryKey(PsndocVO record);
+    int updateByPrimaryKey(Psndoc record);
 }

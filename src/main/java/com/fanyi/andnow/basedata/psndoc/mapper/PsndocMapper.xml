@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.fanyi.andnow.basedata.psndoc.mapper.PsndocMapper" >
-  <resultMap id="BaseResultMap" type="com.fanyi.andnow.common.vo.basedata.PsndocVO" >
+  <resultMap id="BaseResultMap" type="com.fanyi.andnow.common.vo.basedata.Psndoc" >
     <id column="pk_psndoc" property="pkPsndoc" jdbcType="INTEGER" />
     <result column="pk_group" property="pkGroup" jdbcType="INTEGER" />
     <result column="pk_org" property="pkOrg" jdbcType="INTEGER" />
@@ -127,7 +127,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fanyi.andnow.common.vo.basedata.PsndocVO" >
+  <insert id="insert" parameterType="com.fanyi.andnow.common.vo.basedata.Psndoc" >
     insert into bd_psndoc (pk_psndoc, pk_group, pk_org, 
       code, name, usedname, 
       lastname, firstname, nikename, 
@@ -149,7 +149,7 @@
       #{creationtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER}, #{modifiedtime,jdbcType=TIMESTAMP}, 
       #{dr,jdbcType=TINYINT}, #{ts,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.fanyi.andnow.common.vo.basedata.PsndocVO" >
+  <insert id="insertSelective" parameterType="com.fanyi.andnow.common.vo.basedata.Psndoc" >
     insert into bd_psndoc
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="pkPsndoc != null" >
@@ -466,7 +466,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.common.vo.basedata.PsndocVO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.common.vo.basedata.Psndoc" >
     update bd_psndoc
     <set >
       <if test="pkGroup != null" >
@@ -556,7 +556,7 @@
     </set>
     where pk_psndoc = #{pkPsndoc,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.basedata.PsndocVO" >
+  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.basedata.Psndoc" >
     update bd_psndoc
     set pk_group = #{pkGroup,jdbcType=INTEGER},
       pk_org = #{pkOrg,jdbcType=INTEGER},

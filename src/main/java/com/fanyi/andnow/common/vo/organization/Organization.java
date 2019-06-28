@@ -10,7 +10,7 @@ import java.util.Date;
  * @date 2019/6/25
  */
 @Data
-public class OrganizationVO {
+public class Organization {
     private Integer pkOrg;
 
     private String code;
