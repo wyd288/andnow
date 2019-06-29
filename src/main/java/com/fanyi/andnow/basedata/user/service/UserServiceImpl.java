@@ -34,6 +34,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectUserCount();
     }
 
+    @Override
+    public int saveUser(User user) {
+        return 0;
+    }
 
 
 }
