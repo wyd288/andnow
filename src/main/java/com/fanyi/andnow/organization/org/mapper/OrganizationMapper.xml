@@ -94,60 +94,26 @@
     pk_country, pk_timezone, enablestate, note, creator, creationtime, modifier, modifiedtime, 
     dr, ts
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fanyi.andnow.organization.org.service.OrganizationExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    'true' as QUERYID,
-    <include refid="Base_Column_List" />
-    from org_org
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectOrgByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from org_org
     where pk_org = #{pkOrg,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+
+  <select id="selectAllOrg" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from org_org
+    where dr = 0
+  </select>
+
+  <delete id="deleteOrgByPrimaryKey" parameterType="java.lang.Integer" >
     delete from org_org
     where pk_org = #{pkOrg,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fanyi.andnow.organization.org.service.OrganizationExample" >
-    delete from org_org
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.fanyi.andnow.common.vo.organization.Organization" >
-    insert into org_org (pk_org, code, name, 
-      mencode, innercode, shortname, 
-      pk_group, pk_superior, organizationcode, 
-      principal, tel, address, 
-      introduction, countryarea, establishdate, 
-      version, ename, pk_country, 
-      pk_timezone, enablestate, note, 
-      creator, creationtime, modifier, 
-      modifiedtime, dr, ts
-      )
-    values (#{pkOrg,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{mencode,jdbcType=VARCHAR}, #{innercode,jdbcType=VARCHAR}, #{shortname,jdbcType=VARCHAR}, 
-      #{pkGroup,jdbcType=INTEGER}, #{pkSuperior,jdbcType=INTEGER}, #{organizationcode,jdbcType=VARCHAR}, 
-      #{principal,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{introduction,jdbcType=VARCHAR}, #{countryarea,jdbcType=VARCHAR}, #{establishdate,jdbcType=TIMESTAMP}, 
-      #{version,jdbcType=VARCHAR}, #{ename,jdbcType=VARCHAR}, #{pkCountry,jdbcType=INTEGER}, 
-      #{pkTimezone,jdbcType=INTEGER}, #{enablestate,jdbcType=TINYINT}, #{note,jdbcType=VARCHAR}, 
-      #{creator,jdbcType=INTEGER}, #{creationtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER}, 
-      #{modifiedtime,jdbcType=TIMESTAMP}, #{dr,jdbcType=TINYINT}, #{ts,jdbcType=TIMESTAMP}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.fanyi.andnow.common.vo.organization.Organization" >
+
+  <insert id="insertOrg" parameterType="com.fanyi.andnow.common.vo.organization.Organization" >
     insert into org_org
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="pkOrg != null" >
@@ -316,135 +282,8 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fanyi.andnow.organization.org.service.OrganizationExample" resultType="java.lang.Integer" >
-    select count(*) from org_org
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update org_org
-    <set >
-      <if test="group.pkOrg != null" >
-        pk_org = #{group.pkOrg,jdbcType=INTEGER},
-      </if>
-      <if test="group.code != null" >
-        code = #{group.code,jdbcType=VARCHAR},
-      </if>
-      <if test="group.name != null" >
-        name = #{group.name,jdbcType=VARCHAR},
-      </if>
-      <if test="group.mencode != null" >
-        mencode = #{group.mencode,jdbcType=VARCHAR},
-      </if>
-      <if test="group.innercode != null" >
-        innercode = #{group.innercode,jdbcType=VARCHAR},
-      </if>
-      <if test="group.shortname != null" >
-        shortname = #{group.shortname,jdbcType=VARCHAR},
-      </if>
-      <if test="group.pkGroup != null" >
-        pk_group = #{group.pkGroup,jdbcType=INTEGER},
-      </if>
-      <if test="group.pkSuperior != null" >
-        pk_superior = #{group.pkSuperior,jdbcType=INTEGER},
-      </if>
-      <if test="group.organizationcode != null" >
-        organizationcode = #{group.organizationcode,jdbcType=VARCHAR},
-      </if>
-      <if test="group.principal != null" >
-        principal = #{group.principal,jdbcType=INTEGER},
-      </if>
-      <if test="group.tel != null" >
-        tel = #{group.tel,jdbcType=VARCHAR},
-      </if>
-      <if test="group.address != null" >
-        address = #{group.address,jdbcType=VARCHAR},
-      </if>
-      <if test="group.introduction != null" >
-        introduction = #{group.introduction,jdbcType=VARCHAR},
-      </if>
-      <if test="group.countryarea != null" >
-        countryarea = #{group.countryarea,jdbcType=VARCHAR},
-      </if>
-      <if test="group.establishdate != null" >
-        establishdate = #{group.establishdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="group.version != null" >
-        version = #{group.version,jdbcType=VARCHAR},
-      </if>
-      <if test="group.ename != null" >
-        ename = #{group.ename,jdbcType=VARCHAR},
-      </if>
-      <if test="group.pkCountry != null" >
-        pk_country = #{group.pkCountry,jdbcType=INTEGER},
-      </if>
-      <if test="group.pkTimezone != null" >
-        pk_timezone = #{group.pkTimezone,jdbcType=INTEGER},
-      </if>
-      <if test="group.enablestate != null" >
-        enablestate = #{group.enablestate,jdbcType=TINYINT},
-      </if>
-      <if test="group.note != null" >
-        note = #{group.note,jdbcType=VARCHAR},
-      </if>
-      <if test="group.creator != null" >
-        creator = #{group.creator,jdbcType=INTEGER},
-      </if>
-      <if test="group.creationtime != null" >
-        creationtime = #{group.creationtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="group.modifier != null" >
-        modifier = #{group.modifier,jdbcType=INTEGER},
-      </if>
-      <if test="group.modifiedtime != null" >
-        modifiedtime = #{group.modifiedtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="group.dr != null" >
-        dr = #{group.dr,jdbcType=TINYINT},
-      </if>
-      <if test="group.ts != null" >
-        ts = #{group.ts,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update org_org
-    set pk_org = #{group.pkOrg,jdbcType=INTEGER},
-      code = #{group.code,jdbcType=VARCHAR},
-      name = #{group.name,jdbcType=VARCHAR},
-      mencode = #{group.mencode,jdbcType=VARCHAR},
-      innercode = #{group.innercode,jdbcType=VARCHAR},
-      shortname = #{group.shortname,jdbcType=VARCHAR},
-      pk_group = #{group.pkGroup,jdbcType=INTEGER},
-      pk_superior = #{group.pkSuperior,jdbcType=INTEGER},
-      organizationcode = #{group.organizationcode,jdbcType=VARCHAR},
-      principal = #{group.principal,jdbcType=INTEGER},
-      tel = #{group.tel,jdbcType=VARCHAR},
-      address = #{group.address,jdbcType=VARCHAR},
-      introduction = #{group.introduction,jdbcType=VARCHAR},
-      countryarea = #{group.countryarea,jdbcType=VARCHAR},
-      establishdate = #{group.establishdate,jdbcType=TIMESTAMP},
-      version = #{group.version,jdbcType=VARCHAR},
-      ename = #{group.ename,jdbcType=VARCHAR},
-      pk_country = #{group.pkCountry,jdbcType=INTEGER},
-      pk_timezone = #{group.pkTimezone,jdbcType=INTEGER},
-      enablestate = #{group.enablestate,jdbcType=TINYINT},
-      note = #{group.note,jdbcType=VARCHAR},
-      creator = #{group.creator,jdbcType=INTEGER},
-      creationtime = #{group.creationtime,jdbcType=TIMESTAMP},
-      modifier = #{group.modifier,jdbcType=INTEGER},
-      modifiedtime = #{group.modifiedtime,jdbcType=TIMESTAMP},
-      dr = #{group.dr,jdbcType=TINYINT},
-      ts = #{group.ts,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.common.vo.organization.Organization" >
+
+  <update id="updateOrgByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.organization.Organization" >
     update org_org
     <set >
       <if test="code != null" >
@@ -528,34 +367,5 @@
     </set>
     where pk_org = #{pkOrg,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.organization.Organization" >
-    update org_org
-    set code = #{code,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
-      mencode = #{mencode,jdbcType=VARCHAR},
-      innercode = #{innercode,jdbcType=VARCHAR},
-      shortname = #{shortname,jdbcType=VARCHAR},
-      pk_group = #{pkGroup,jdbcType=INTEGER},
-      pk_superior = #{pkSuperior,jdbcType=INTEGER},
-      organizationcode = #{organizationcode,jdbcType=VARCHAR},
-      principal = #{principal,jdbcType=INTEGER},
-      tel = #{tel,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
-      introduction = #{introduction,jdbcType=VARCHAR},
-      countryarea = #{countryarea,jdbcType=VARCHAR},
-      establishdate = #{establishdate,jdbcType=TIMESTAMP},
-      version = #{version,jdbcType=VARCHAR},
-      ename = #{ename,jdbcType=VARCHAR},
-      pk_country = #{pkCountry,jdbcType=INTEGER},
-      pk_timezone = #{pkTimezone,jdbcType=INTEGER},
-      enablestate = #{enablestate,jdbcType=TINYINT},
-      note = #{note,jdbcType=VARCHAR},
-      creator = #{creator,jdbcType=INTEGER},
-      creationtime = #{creationtime,jdbcType=TIMESTAMP},
-      modifier = #{modifier,jdbcType=INTEGER},
-      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
-      dr = #{dr,jdbcType=TINYINT},
-      ts = #{ts,jdbcType=TIMESTAMP}
-    where pk_org = #{pkOrg,jdbcType=INTEGER}
-  </update>
+
 </mapper>
