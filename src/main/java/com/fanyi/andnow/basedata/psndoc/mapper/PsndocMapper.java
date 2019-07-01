@@ -1,30 +1,44 @@
 package com.fanyi.andnow.basedata.psndoc.mapper;
 
 import com.fanyi.andnow.common.vo.basedata.Psndoc;
-import com.fanyi.andnow.basedata.psndoc.service.PsndocExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+@Mapper
 public interface PsndocMapper {
-    int countByExample(PsndocExample example);
 
-    int deleteByExample(PsndocExample example);
+    /**
+     * 添加人员信息
+     * @param psndoc
+     * @return int（大于0成功小于0失败）
+     */
+    int insertPsndc(Psndoc psndoc);
 
-    int deleteByPrimaryKey(Integer pkPsndoc);
+    /**
+     * 查询所有人员信息
+     * @return List (所有人员信息)
+     */
+    List<Psndoc> selectPsndocList();
 
-    int insert(Psndoc group);
+    /**
+     * 根据主键查询个人信息
+     * @param pk
+     * @return Psndoc
+     */
+    Psndoc selectByPrimaryKey(Integer pk);
 
-    int insertSelective(Psndoc group);
+    /**
+     * 更新人员信息
+     * @param psndoc
+     * @return int（大于0成功小于0失败）
+     */
+    int updateByPsndoc(Psndoc psndoc);
 
-    List<Psndoc> selectByExample(PsndocExample example);
+    /**
+     * 根据主键删除人员信息
+     * @param pk
+     * @return int（大于0成功小于0失败）
+     */
+    int deletePsndocByPrimaryKey(Integer pk);
 
-    Psndoc selectByPrimaryKey(Integer pkPsndoc);
-
-    int updateByExampleSelective(@Param("group") Psndoc group, @Param("example") PsndocExample example);
-
-    int updateByExample(@Param("group") Psndoc group, @Param("example") PsndocExample example);
-
-    int updateByPrimaryKeySelective(Psndoc group);
-
-    int updateByPrimaryKey(Psndoc group);
 }

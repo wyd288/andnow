@@ -96,60 +96,25 @@
     homephone, email, address, enablestate, note, creator, creationtime, modifier, modifiedtime, 
     dr, ts
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fanyi.andnow.basedata.psndoc.service.PsndocExample" >
+  <!--查询所有人员-->
+  <select id="selectPsndocList" resultMap="BaseResultMap" >
     select
-    <if test="distinct" >
-      distinct
-    </if>
-    'true' as QUERYID,
     <include refid="Base_Column_List" />
     from bd_psndoc
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
+    order by #{orderByClause}
   </select>
+
+  <!--根据主键查询人员-->
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from bd_psndoc
     where pk_psndoc = #{pkPsndoc,jdbcType=INTEGER}
+    AND dr = '0'
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from bd_psndoc
-    where pk_psndoc = #{pkPsndoc,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.fanyi.andnow.basedata.psndoc.service.PsndocExample" >
-    delete from bd_psndoc
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.fanyi.andnow.common.vo.basedata.Psndoc" >
-    insert into bd_psndoc (pk_psndoc, pk_group, pk_org, 
-      code, name, usedname, 
-      lastname, firstname, nikename, 
-      mnecode, joinworkdate, pk_psnjob, 
-      sex, birthday, cardtype, 
-      idcard, phone, officephone, 
-      homephone, email, address, 
-      enablestate, note, creator, 
-      creationtime, modifier, modifiedtime, 
-      dr, ts)
-    values (#{pkPsndoc,jdbcType=INTEGER}, #{pkGroup,jdbcType=INTEGER}, #{pkOrg,jdbcType=INTEGER}, 
-      #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{usedname,jdbcType=VARCHAR}, 
-      #{lastname,jdbcType=VARCHAR}, #{firstname,jdbcType=VARCHAR}, #{nikename,jdbcType=VARCHAR}, 
-      #{mnecode,jdbcType=VARCHAR}, #{joinworkdate,jdbcType=DATE}, #{pkPsnjob,jdbcType=INTEGER}, 
-      #{sex,jdbcType=TINYINT}, #{birthday,jdbcType=DATE}, #{cardtype,jdbcType=TINYINT}, 
-      #{idcard,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{officephone,jdbcType=VARCHAR}, 
-      #{homephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{enablestate,jdbcType=TINYINT}, #{note,jdbcType=VARCHAR}, #{creator,jdbcType=INTEGER}, 
-      #{creationtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER}, #{modifiedtime,jdbcType=TIMESTAMP}, 
-      #{dr,jdbcType=TINYINT}, #{ts,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.fanyi.andnow.common.vo.basedata.Psndoc" >
+
+  <!--添加人员信息-->
+  <insert id="insertPsndc" parameterType="com.fanyi.andnow.common.vo.basedata.Psndoc" >
     insert into bd_psndoc
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="pkPsndoc != null" >
@@ -330,143 +295,16 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fanyi.andnow.basedata.psndoc.service.PsndocExample" resultType="java.lang.Integer" >
-    select count(*) from bd_psndoc
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+
+  <!--根据主键删除人员信息-->
+  <update id="deletePsndocByPrimaryKey" parameterType="java.lang.Integer" >
     update bd_psndoc
-    <set >
-      <if test="group.pkPsndoc != null" >
-        pk_psndoc = #{group.pkPsndoc,jdbcType=INTEGER},
-      </if>
-      <if test="group.pkGroup != null" >
-        pk_group = #{group.pkGroup,jdbcType=INTEGER},
-      </if>
-      <if test="group.pkOrg != null" >
-        pk_org = #{group.pkOrg,jdbcType=INTEGER},
-      </if>
-      <if test="group.code != null" >
-        code = #{group.code,jdbcType=VARCHAR},
-      </if>
-      <if test="group.name != null" >
-        name = #{group.name,jdbcType=VARCHAR},
-      </if>
-      <if test="group.usedname != null" >
-        usedname = #{group.usedname,jdbcType=VARCHAR},
-      </if>
-      <if test="group.lastname != null" >
-        lastname = #{group.lastname,jdbcType=VARCHAR},
-      </if>
-      <if test="group.firstname != null" >
-        firstname = #{group.firstname,jdbcType=VARCHAR},
-      </if>
-      <if test="group.nikename != null" >
-        nikename = #{group.nikename,jdbcType=VARCHAR},
-      </if>
-      <if test="group.mnecode != null" >
-        mnecode = #{group.mnecode,jdbcType=VARCHAR},
-      </if>
-      <if test="group.joinworkdate != null" >
-        joinworkdate = #{group.joinworkdate,jdbcType=DATE},
-      </if>
-      <if test="group.pkPsnjob != null" >
-        pk_psnjob = #{group.pkPsnjob,jdbcType=INTEGER},
-      </if>
-      <if test="group.sex != null" >
-        sex = #{group.sex,jdbcType=TINYINT},
-      </if>
-      <if test="group.birthday != null" >
-        birthday = #{group.birthday,jdbcType=DATE},
-      </if>
-      <if test="group.cardtype != null" >
-        cardtype = #{group.cardtype,jdbcType=TINYINT},
-      </if>
-      <if test="group.idcard != null" >
-        idcard = #{group.idcard,jdbcType=VARCHAR},
-      </if>
-      <if test="group.phone != null" >
-        phone = #{group.phone,jdbcType=VARCHAR},
-      </if>
-      <if test="group.officephone != null" >
-        officephone = #{group.officephone,jdbcType=VARCHAR},
-      </if>
-      <if test="group.homephone != null" >
-        homephone = #{group.homephone,jdbcType=VARCHAR},
-      </if>
-      <if test="group.email != null" >
-        email = #{group.email,jdbcType=VARCHAR},
-      </if>
-      <if test="group.address != null" >
-        address = #{group.address,jdbcType=VARCHAR},
-      </if>
-      <if test="group.enablestate != null" >
-        enablestate = #{group.enablestate,jdbcType=TINYINT},
-      </if>
-      <if test="group.note != null" >
-        note = #{group.note,jdbcType=VARCHAR},
-      </if>
-      <if test="group.creator != null" >
-        creator = #{group.creator,jdbcType=INTEGER},
-      </if>
-      <if test="group.creationtime != null" >
-        creationtime = #{group.creationtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="group.modifier != null" >
-        modifier = #{group.modifier,jdbcType=INTEGER},
-      </if>
-      <if test="group.modifiedtime != null" >
-        modifiedtime = #{group.modifiedtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="group.dr != null" >
-        dr = #{group.dr,jdbcType=TINYINT},
-      </if>
-      <if test="group.ts != null" >
-        ts = #{group.ts,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
+    set dr = '1'
+    where pk_psndoc = #{pkPsndoc,jdbcType=INTEGER}
   </update>
-  <update id="updateByExample" parameterType="map" >
-    update bd_psndoc
-    set pk_psndoc = #{group.pkPsndoc,jdbcType=INTEGER},
-      pk_group = #{group.pkGroup,jdbcType=INTEGER},
-      pk_org = #{group.pkOrg,jdbcType=INTEGER},
-      code = #{group.code,jdbcType=VARCHAR},
-      name = #{group.name,jdbcType=VARCHAR},
-      usedname = #{group.usedname,jdbcType=VARCHAR},
-      lastname = #{group.lastname,jdbcType=VARCHAR},
-      firstname = #{group.firstname,jdbcType=VARCHAR},
-      nikename = #{group.nikename,jdbcType=VARCHAR},
-      mnecode = #{group.mnecode,jdbcType=VARCHAR},
-      joinworkdate = #{group.joinworkdate,jdbcType=DATE},
-      pk_psnjob = #{group.pkPsnjob,jdbcType=INTEGER},
-      sex = #{group.sex,jdbcType=TINYINT},
-      birthday = #{group.birthday,jdbcType=DATE},
-      cardtype = #{group.cardtype,jdbcType=TINYINT},
-      idcard = #{group.idcard,jdbcType=VARCHAR},
-      phone = #{group.phone,jdbcType=VARCHAR},
-      officephone = #{group.officephone,jdbcType=VARCHAR},
-      homephone = #{group.homephone,jdbcType=VARCHAR},
-      email = #{group.email,jdbcType=VARCHAR},
-      address = #{group.address,jdbcType=VARCHAR},
-      enablestate = #{group.enablestate,jdbcType=TINYINT},
-      note = #{group.note,jdbcType=VARCHAR},
-      creator = #{group.creator,jdbcType=INTEGER},
-      creationtime = #{group.creationtime,jdbcType=TIMESTAMP},
-      modifier = #{group.modifier,jdbcType=INTEGER},
-      modifiedtime = #{group.modifiedtime,jdbcType=TIMESTAMP},
-      dr = #{group.dr,jdbcType=TINYINT},
-      ts = #{group.ts,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.common.vo.basedata.Psndoc" >
+
+  <!--更新人员信息-->
+  <update id="updateByPsndoc" parameterType="com.fanyi.andnow.common.vo.basedata.Psndoc" >
     update bd_psndoc
     <set >
       <if test="pkGroup != null" >
@@ -554,38 +392,6 @@
         ts = #{ts,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where pk_psndoc = #{pkPsndoc,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.basedata.Psndoc" >
-    update bd_psndoc
-    set pk_group = #{pkGroup,jdbcType=INTEGER},
-      pk_org = #{pkOrg,jdbcType=INTEGER},
-      code = #{code,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
-      usedname = #{usedname,jdbcType=VARCHAR},
-      lastname = #{lastname,jdbcType=VARCHAR},
-      firstname = #{firstname,jdbcType=VARCHAR},
-      nikename = #{nikename,jdbcType=VARCHAR},
-      mnecode = #{mnecode,jdbcType=VARCHAR},
-      joinworkdate = #{joinworkdate,jdbcType=DATE},
-      pk_psnjob = #{pkPsnjob,jdbcType=INTEGER},
-      sex = #{sex,jdbcType=TINYINT},
-      birthday = #{birthday,jdbcType=DATE},
-      cardtype = #{cardtype,jdbcType=TINYINT},
-      idcard = #{idcard,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
-      officephone = #{officephone,jdbcType=VARCHAR},
-      homephone = #{homephone,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
-      enablestate = #{enablestate,jdbcType=TINYINT},
-      note = #{note,jdbcType=VARCHAR},
-      creator = #{creator,jdbcType=INTEGER},
-      creationtime = #{creationtime,jdbcType=TIMESTAMP},
-      modifier = #{modifier,jdbcType=INTEGER},
-      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
-      dr = #{dr,jdbcType=TINYINT},
-      ts = #{ts,jdbcType=TIMESTAMP}
     where pk_psndoc = #{pkPsndoc,jdbcType=INTEGER}
   </update>
 </mapper>
