@@ -12,19 +12,19 @@ public interface PsnjobMapper {
 
     int deleteByPrimaryKey(Integer pkPsnjob);
 
-    int insert(Psnjob record);
+    int insert(Psnjob group);
 
-    int insertSelective(Psnjob record);
+    int insertSelective(Psnjob group);
 
     List<Psnjob> selectByExample(PsnjobExample example);
 
     Psnjob selectByPrimaryKey(Integer pkPsnjob);
 
-    int updateByExampleSelective(@Param("record") Psnjob record, @Param("example") PsnjobExample example);
+    int updateByExampleSelective(@Param("group") Psnjob group, @Param("example") PsnjobExample example);
 
-    int updateByExample(@Param("record") Psnjob record, @Param("example") PsnjobExample example);
+    int updateByExample(@Param("group") Psnjob group, @Param("example") PsnjobExample example);
 
-    int updateByPrimaryKeySelective(Psnjob record);
+    int updateByPrimaryKeySelective(Psnjob group);
 
-    int updateByPrimaryKey(Psnjob record);
+    int updateByPrimaryKey(Psnjob group);
 }

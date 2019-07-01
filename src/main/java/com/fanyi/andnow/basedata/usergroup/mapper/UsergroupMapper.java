@@ -12,19 +12,19 @@ public interface UsergroupMapper {
 
     int deleteByPrimaryKey(Integer pkUsergroup);
 
-    int insert(Usergroup record);
+    int insert(Usergroup group);
 
-    int insertSelective(Usergroup record);
+    int insertSelective(Usergroup group);
 
     List<Usergroup> selectByExample(UsergroupExample example);
 
     Usergroup selectByPrimaryKey(Integer pkUsergroup);
 
-    int updateByExampleSelective(@Param("record") Usergroup record, @Param("example") UsergroupExample example);
+    int updateByExampleSelective(@Param("group") Usergroup group, @Param("example") UsergroupExample example);
 
-    int updateByExample(@Param("record") Usergroup record, @Param("example") UsergroupExample example);
+    int updateByExample(@Param("group") Usergroup group, @Param("example") UsergroupExample example);
 
-    int updateByPrimaryKeySelective(Usergroup record);
+    int updateByPrimaryKeySelective(Usergroup group);
 
-    int updateByPrimaryKey(Usergroup record);
+    int updateByPrimaryKey(Usergroup group);
 }

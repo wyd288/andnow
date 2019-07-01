@@ -12,19 +12,19 @@ public interface StorageMapper {
 
     int deleteByPrimaryKey(Integer pkStorage);
 
-    int insert(Storage record);
+    int insert(Storage group);
 
-    int insertSelective(Storage record);
+    int insertSelective(Storage group);
 
     List<Storage> selectByExample(StorageExample example);
 
     Storage selectByPrimaryKey(Integer pkStorage);
 
-    int updateByExampleSelective(@Param("record") Storage record, @Param("example") StorageExample example);
+    int updateByExampleSelective(@Param("group") Storage group, @Param("example") StorageExample example);
 
-    int updateByExample(@Param("record") Storage record, @Param("example") StorageExample example);
+    int updateByExample(@Param("group") Storage group, @Param("example") StorageExample example);
 
-    int updateByPrimaryKeySelective(Storage record);
+    int updateByPrimaryKeySelective(Storage group);
 
-    int updateByPrimaryKey(Storage record);
+    int updateByPrimaryKey(Storage group);
 }

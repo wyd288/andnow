@@ -339,92 +339,92 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update bd_psndoc
     <set >
-      <if test="record.pkPsndoc != null" >
-        pk_psndoc = #{record.pkPsndoc,jdbcType=INTEGER},
+      <if test="group.pkPsndoc != null" >
+        pk_psndoc = #{group.pkPsndoc,jdbcType=INTEGER},
       </if>
-      <if test="record.pkGroup != null" >
-        pk_group = #{record.pkGroup,jdbcType=INTEGER},
+      <if test="group.pkGroup != null" >
+        pk_group = #{group.pkGroup,jdbcType=INTEGER},
       </if>
-      <if test="record.pkOrg != null" >
-        pk_org = #{record.pkOrg,jdbcType=INTEGER},
+      <if test="group.pkOrg != null" >
+        pk_org = #{group.pkOrg,jdbcType=INTEGER},
       </if>
-      <if test="record.code != null" >
-        code = #{record.code,jdbcType=VARCHAR},
+      <if test="group.code != null" >
+        code = #{group.code,jdbcType=VARCHAR},
       </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="group.name != null" >
+        name = #{group.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.usedname != null" >
-        usedname = #{record.usedname,jdbcType=VARCHAR},
+      <if test="group.usedname != null" >
+        usedname = #{group.usedname,jdbcType=VARCHAR},
       </if>
-      <if test="record.lastname != null" >
-        lastname = #{record.lastname,jdbcType=VARCHAR},
+      <if test="group.lastname != null" >
+        lastname = #{group.lastname,jdbcType=VARCHAR},
       </if>
-      <if test="record.firstname != null" >
-        firstname = #{record.firstname,jdbcType=VARCHAR},
+      <if test="group.firstname != null" >
+        firstname = #{group.firstname,jdbcType=VARCHAR},
       </if>
-      <if test="record.nikename != null" >
-        nikename = #{record.nikename,jdbcType=VARCHAR},
+      <if test="group.nikename != null" >
+        nikename = #{group.nikename,jdbcType=VARCHAR},
       </if>
-      <if test="record.mnecode != null" >
-        mnecode = #{record.mnecode,jdbcType=VARCHAR},
+      <if test="group.mnecode != null" >
+        mnecode = #{group.mnecode,jdbcType=VARCHAR},
       </if>
-      <if test="record.joinworkdate != null" >
-        joinworkdate = #{record.joinworkdate,jdbcType=DATE},
+      <if test="group.joinworkdate != null" >
+        joinworkdate = #{group.joinworkdate,jdbcType=DATE},
       </if>
-      <if test="record.pkPsnjob != null" >
-        pk_psnjob = #{record.pkPsnjob,jdbcType=INTEGER},
+      <if test="group.pkPsnjob != null" >
+        pk_psnjob = #{group.pkPsnjob,jdbcType=INTEGER},
       </if>
-      <if test="record.sex != null" >
-        sex = #{record.sex,jdbcType=TINYINT},
+      <if test="group.sex != null" >
+        sex = #{group.sex,jdbcType=TINYINT},
       </if>
-      <if test="record.birthday != null" >
-        birthday = #{record.birthday,jdbcType=DATE},
+      <if test="group.birthday != null" >
+        birthday = #{group.birthday,jdbcType=DATE},
       </if>
-      <if test="record.cardtype != null" >
-        cardtype = #{record.cardtype,jdbcType=TINYINT},
+      <if test="group.cardtype != null" >
+        cardtype = #{group.cardtype,jdbcType=TINYINT},
       </if>
-      <if test="record.idcard != null" >
-        idcard = #{record.idcard,jdbcType=VARCHAR},
+      <if test="group.idcard != null" >
+        idcard = #{group.idcard,jdbcType=VARCHAR},
       </if>
-      <if test="record.phone != null" >
-        phone = #{record.phone,jdbcType=VARCHAR},
+      <if test="group.phone != null" >
+        phone = #{group.phone,jdbcType=VARCHAR},
       </if>
-      <if test="record.officephone != null" >
-        officephone = #{record.officephone,jdbcType=VARCHAR},
+      <if test="group.officephone != null" >
+        officephone = #{group.officephone,jdbcType=VARCHAR},
       </if>
-      <if test="record.homephone != null" >
-        homephone = #{record.homephone,jdbcType=VARCHAR},
+      <if test="group.homephone != null" >
+        homephone = #{group.homephone,jdbcType=VARCHAR},
       </if>
-      <if test="record.email != null" >
-        email = #{record.email,jdbcType=VARCHAR},
+      <if test="group.email != null" >
+        email = #{group.email,jdbcType=VARCHAR},
       </if>
-      <if test="record.address != null" >
-        address = #{record.address,jdbcType=VARCHAR},
+      <if test="group.address != null" >
+        address = #{group.address,jdbcType=VARCHAR},
       </if>
-      <if test="record.enablestate != null" >
-        enablestate = #{record.enablestate,jdbcType=TINYINT},
+      <if test="group.enablestate != null" >
+        enablestate = #{group.enablestate,jdbcType=TINYINT},
       </if>
-      <if test="record.note != null" >
-        note = #{record.note,jdbcType=VARCHAR},
+      <if test="group.note != null" >
+        note = #{group.note,jdbcType=VARCHAR},
       </if>
-      <if test="record.creator != null" >
-        creator = #{record.creator,jdbcType=INTEGER},
+      <if test="group.creator != null" >
+        creator = #{group.creator,jdbcType=INTEGER},
       </if>
-      <if test="record.creationtime != null" >
-        creationtime = #{record.creationtime,jdbcType=TIMESTAMP},
+      <if test="group.creationtime != null" >
+        creationtime = #{group.creationtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.modifier != null" >
-        modifier = #{record.modifier,jdbcType=INTEGER},
+      <if test="group.modifier != null" >
+        modifier = #{group.modifier,jdbcType=INTEGER},
       </if>
-      <if test="record.modifiedtime != null" >
-        modifiedtime = #{record.modifiedtime,jdbcType=TIMESTAMP},
+      <if test="group.modifiedtime != null" >
+        modifiedtime = #{group.modifiedtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.dr != null" >
-        dr = #{record.dr,jdbcType=TINYINT},
+      <if test="group.dr != null" >
+        dr = #{group.dr,jdbcType=TINYINT},
       </if>
-      <if test="record.ts != null" >
-        ts = #{record.ts,jdbcType=TIMESTAMP},
+      <if test="group.ts != null" >
+        ts = #{group.ts,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -433,35 +433,35 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update bd_psndoc
-    set pk_psndoc = #{record.pkPsndoc,jdbcType=INTEGER},
-      pk_group = #{record.pkGroup,jdbcType=INTEGER},
-      pk_org = #{record.pkOrg,jdbcType=INTEGER},
-      code = #{record.code,jdbcType=VARCHAR},
-      name = #{record.name,jdbcType=VARCHAR},
-      usedname = #{record.usedname,jdbcType=VARCHAR},
-      lastname = #{record.lastname,jdbcType=VARCHAR},
-      firstname = #{record.firstname,jdbcType=VARCHAR},
-      nikename = #{record.nikename,jdbcType=VARCHAR},
-      mnecode = #{record.mnecode,jdbcType=VARCHAR},
-      joinworkdate = #{record.joinworkdate,jdbcType=DATE},
-      pk_psnjob = #{record.pkPsnjob,jdbcType=INTEGER},
-      sex = #{record.sex,jdbcType=TINYINT},
-      birthday = #{record.birthday,jdbcType=DATE},
-      cardtype = #{record.cardtype,jdbcType=TINYINT},
-      idcard = #{record.idcard,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=VARCHAR},
-      officephone = #{record.officephone,jdbcType=VARCHAR},
-      homephone = #{record.homephone,jdbcType=VARCHAR},
-      email = #{record.email,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR},
-      enablestate = #{record.enablestate,jdbcType=TINYINT},
-      note = #{record.note,jdbcType=VARCHAR},
-      creator = #{record.creator,jdbcType=INTEGER},
-      creationtime = #{record.creationtime,jdbcType=TIMESTAMP},
-      modifier = #{record.modifier,jdbcType=INTEGER},
-      modifiedtime = #{record.modifiedtime,jdbcType=TIMESTAMP},
-      dr = #{record.dr,jdbcType=TINYINT},
-      ts = #{record.ts,jdbcType=TIMESTAMP}
+    set pk_psndoc = #{group.pkPsndoc,jdbcType=INTEGER},
+      pk_group = #{group.pkGroup,jdbcType=INTEGER},
+      pk_org = #{group.pkOrg,jdbcType=INTEGER},
+      code = #{group.code,jdbcType=VARCHAR},
+      name = #{group.name,jdbcType=VARCHAR},
+      usedname = #{group.usedname,jdbcType=VARCHAR},
+      lastname = #{group.lastname,jdbcType=VARCHAR},
+      firstname = #{group.firstname,jdbcType=VARCHAR},
+      nikename = #{group.nikename,jdbcType=VARCHAR},
+      mnecode = #{group.mnecode,jdbcType=VARCHAR},
+      joinworkdate = #{group.joinworkdate,jdbcType=DATE},
+      pk_psnjob = #{group.pkPsnjob,jdbcType=INTEGER},
+      sex = #{group.sex,jdbcType=TINYINT},
+      birthday = #{group.birthday,jdbcType=DATE},
+      cardtype = #{group.cardtype,jdbcType=TINYINT},
+      idcard = #{group.idcard,jdbcType=VARCHAR},
+      phone = #{group.phone,jdbcType=VARCHAR},
+      officephone = #{group.officephone,jdbcType=VARCHAR},
+      homephone = #{group.homephone,jdbcType=VARCHAR},
+      email = #{group.email,jdbcType=VARCHAR},
+      address = #{group.address,jdbcType=VARCHAR},
+      enablestate = #{group.enablestate,jdbcType=TINYINT},
+      note = #{group.note,jdbcType=VARCHAR},
+      creator = #{group.creator,jdbcType=INTEGER},
+      creationtime = #{group.creationtime,jdbcType=TIMESTAMP},
+      modifier = #{group.modifier,jdbcType=INTEGER},
+      modifiedtime = #{group.modifiedtime,jdbcType=TIMESTAMP},
+      dr = #{group.dr,jdbcType=TINYINT},
+      ts = #{group.ts,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>

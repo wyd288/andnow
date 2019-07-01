@@ -92,58 +92,25 @@
     countryarea, address, tel, fax, establishdate, version, ename, pk_country, pk_timezone, 
     enablestate, note, creator, creationtime, modifier, modifiedtime, dr, ts
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fanyi.andnow.organization.group.service.GroupExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    'true' as QUERYID,
-    <include refid="Base_Column_List" />
-    from org_group
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectGroupByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from org_group
     where pk_group = #{pkGroup,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+
+  <select id="selectAllGroup" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from org_group
+    where dr = 0
+  </select>
+
+  <delete id="deleteGroupByPrimaryKey" parameterType="java.lang.Integer" >
     delete from org_group
     where pk_group = #{pkGroup,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fanyi.andnow.organization.group.service.GroupExample" >
-    delete from org_group
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.fanyi.andnow.common.vo.organization.Group" >
-    insert into org_group (pk_group, code, name, 
-      mencode, innercode, shortname, 
-      pk_superior, service, introduction, 
-      countryarea, address, tel, 
-      fax, establishdate, version, 
-      ename, pk_country, pk_timezone, 
-      enablestate, note, creator, 
-      creationtime, modifier, modifiedtime, 
-      dr, ts)
-    values (#{pkGroup,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{mencode,jdbcType=VARCHAR}, #{innercode,jdbcType=VARCHAR}, #{shortname,jdbcType=VARCHAR}, 
-      #{pkSuperior,jdbcType=INTEGER}, #{service,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, 
-      #{countryarea,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
-      #{fax,jdbcType=VARCHAR}, #{establishdate,jdbcType=DATE}, #{version,jdbcType=VARCHAR}, 
-      #{ename,jdbcType=VARCHAR}, #{pkCountry,jdbcType=INTEGER}, #{pkTimezone,jdbcType=INTEGER}, 
-      #{enablestate,jdbcType=TINYINT}, #{note,jdbcType=VARCHAR}, #{creator,jdbcType=INTEGER}, 
-      #{creationtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER}, #{modifiedtime,jdbcType=TIMESTAMP}, 
-      #{dr,jdbcType=TINYINT}, #{ts,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.fanyi.andnow.common.vo.organization.Group" >
+  <insert id="insertGroup" parameterType="com.fanyi.andnow.common.vo.organization.Group" >
     insert into org_group
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="pkGroup != null" >
@@ -306,131 +273,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fanyi.andnow.organization.group.service.GroupExample" resultType="java.lang.Integer" >
-    select count(*) from org_group
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update org_group
-    <set >
-      <if test="record.pkGroup != null" >
-        pk_group = #{record.pkGroup,jdbcType=INTEGER},
-      </if>
-      <if test="record.code != null" >
-        code = #{record.code,jdbcType=VARCHAR},
-      </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
-      </if>
-      <if test="record.mencode != null" >
-        mencode = #{record.mencode,jdbcType=VARCHAR},
-      </if>
-      <if test="record.innercode != null" >
-        innercode = #{record.innercode,jdbcType=VARCHAR},
-      </if>
-      <if test="record.shortname != null" >
-        shortname = #{record.shortname,jdbcType=VARCHAR},
-      </if>
-      <if test="record.pkSuperior != null" >
-        pk_superior = #{record.pkSuperior,jdbcType=INTEGER},
-      </if>
-      <if test="record.service != null" >
-        service = #{record.service,jdbcType=VARCHAR},
-      </if>
-      <if test="record.introduction != null" >
-        introduction = #{record.introduction,jdbcType=VARCHAR},
-      </if>
-      <if test="record.countryarea != null" >
-        countryarea = #{record.countryarea,jdbcType=VARCHAR},
-      </if>
-      <if test="record.address != null" >
-        address = #{record.address,jdbcType=VARCHAR},
-      </if>
-      <if test="record.tel != null" >
-        tel = #{record.tel,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fax != null" >
-        fax = #{record.fax,jdbcType=VARCHAR},
-      </if>
-      <if test="record.establishdate != null" >
-        establishdate = #{record.establishdate,jdbcType=DATE},
-      </if>
-      <if test="record.version != null" >
-        version = #{record.version,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ename != null" >
-        ename = #{record.ename,jdbcType=VARCHAR},
-      </if>
-      <if test="record.pkCountry != null" >
-        pk_country = #{record.pkCountry,jdbcType=INTEGER},
-      </if>
-      <if test="record.pkTimezone != null" >
-        pk_timezone = #{record.pkTimezone,jdbcType=INTEGER},
-      </if>
-      <if test="record.enablestate != null" >
-        enablestate = #{record.enablestate,jdbcType=TINYINT},
-      </if>
-      <if test="record.note != null" >
-        note = #{record.note,jdbcType=VARCHAR},
-      </if>
-      <if test="record.creator != null" >
-        creator = #{record.creator,jdbcType=INTEGER},
-      </if>
-      <if test="record.creationtime != null" >
-        creationtime = #{record.creationtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.modifier != null" >
-        modifier = #{record.modifier,jdbcType=INTEGER},
-      </if>
-      <if test="record.modifiedtime != null" >
-        modifiedtime = #{record.modifiedtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.dr != null" >
-        dr = #{record.dr,jdbcType=TINYINT},
-      </if>
-      <if test="record.ts != null" >
-        ts = #{record.ts,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update org_group
-    set pk_group = #{record.pkGroup,jdbcType=INTEGER},
-      code = #{record.code,jdbcType=VARCHAR},
-      name = #{record.name,jdbcType=VARCHAR},
-      mencode = #{record.mencode,jdbcType=VARCHAR},
-      innercode = #{record.innercode,jdbcType=VARCHAR},
-      shortname = #{record.shortname,jdbcType=VARCHAR},
-      pk_superior = #{record.pkSuperior,jdbcType=INTEGER},
-      service = #{record.service,jdbcType=VARCHAR},
-      introduction = #{record.introduction,jdbcType=VARCHAR},
-      countryarea = #{record.countryarea,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR},
-      tel = #{record.tel,jdbcType=VARCHAR},
-      fax = #{record.fax,jdbcType=VARCHAR},
-      establishdate = #{record.establishdate,jdbcType=DATE},
-      version = #{record.version,jdbcType=VARCHAR},
-      ename = #{record.ename,jdbcType=VARCHAR},
-      pk_country = #{record.pkCountry,jdbcType=INTEGER},
-      pk_timezone = #{record.pkTimezone,jdbcType=INTEGER},
-      enablestate = #{record.enablestate,jdbcType=TINYINT},
-      note = #{record.note,jdbcType=VARCHAR},
-      creator = #{record.creator,jdbcType=INTEGER},
-      creationtime = #{record.creationtime,jdbcType=TIMESTAMP},
-      modifier = #{record.modifier,jdbcType=INTEGER},
-      modifiedtime = #{record.modifiedtime,jdbcType=TIMESTAMP},
-      dr = #{record.dr,jdbcType=TINYINT},
-      ts = #{record.ts,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.common.vo.organization.Group" >
+  <update id="updateGroupByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.organization.Group" >
     update org_group
     <set >
       <if test="code != null" >
@@ -511,33 +354,5 @@
     </set>
     where pk_group = #{pkGroup,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.organization.Group" >
-    update org_group
-    set code = #{code,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
-      mencode = #{mencode,jdbcType=VARCHAR},
-      innercode = #{innercode,jdbcType=VARCHAR},
-      shortname = #{shortname,jdbcType=VARCHAR},
-      pk_superior = #{pkSuperior,jdbcType=INTEGER},
-      service = #{service,jdbcType=VARCHAR},
-      introduction = #{introduction,jdbcType=VARCHAR},
-      countryarea = #{countryarea,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
-      tel = #{tel,jdbcType=VARCHAR},
-      fax = #{fax,jdbcType=VARCHAR},
-      establishdate = #{establishdate,jdbcType=DATE},
-      version = #{version,jdbcType=VARCHAR},
-      ename = #{ename,jdbcType=VARCHAR},
-      pk_country = #{pkCountry,jdbcType=INTEGER},
-      pk_timezone = #{pkTimezone,jdbcType=INTEGER},
-      enablestate = #{enablestate,jdbcType=TINYINT},
-      note = #{note,jdbcType=VARCHAR},
-      creator = #{creator,jdbcType=INTEGER},
-      creationtime = #{creationtime,jdbcType=TIMESTAMP},
-      modifier = #{modifier,jdbcType=INTEGER},
-      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
-      dr = #{dr,jdbcType=TINYINT},
-      ts = #{ts,jdbcType=TIMESTAMP}
-    where pk_group = #{pkGroup,jdbcType=INTEGER}
-  </update>
+
 </mapper>

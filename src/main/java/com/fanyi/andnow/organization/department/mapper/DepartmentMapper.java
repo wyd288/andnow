@@ -12,19 +12,19 @@ public interface DepartmentMapper {
 
     int deleteByPrimaryKey(Integer pkDept);
 
-    int insert(Department record);
+    int insert(Department group);
 
-    int insertSelective(Department record);
+    int insertSelective(Department group);
 
     List<Department> selectByExample(DepartmentExample example);
 
     Department selectByPrimaryKey(Integer pkDept);
 
-    int updateByExampleSelective(@Param("record") Department record, @Param("example") DepartmentExample example);
+    int updateByExampleSelective(@Param("group") Department group, @Param("example") DepartmentExample example);
 
-    int updateByExample(@Param("record") Department record, @Param("example") DepartmentExample example);
+    int updateByExample(@Param("group") Department group, @Param("example") DepartmentExample example);
 
-    int updateByPrimaryKeySelective(Department record);
+    int updateByPrimaryKeySelective(Department group);
 
-    int updateByPrimaryKey(Department record);
+    int updateByPrimaryKey(Department group);
 }

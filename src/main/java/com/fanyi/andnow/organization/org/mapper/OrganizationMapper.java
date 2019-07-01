@@ -12,19 +12,19 @@ public interface OrganizationMapper {
 
     int deleteByPrimaryKey(Integer pkOrg);
 
-    int insert(Organization record);
+    int insert(Organization group);
 
-    int insertSelective(Organization record);
+    int insertSelective(Organization group);
 
     List<Organization> selectByExample(OrganizationExample example);
 
     Organization selectByPrimaryKey(Integer pkOrg);
 
-    int updateByExampleSelective(@Param("record") Organization record, @Param("example") OrganizationExample example);
+    int updateByExampleSelective(@Param("group") Organization group, @Param("example") OrganizationExample example);
 
-    int updateByExample(@Param("record") Organization record, @Param("example") OrganizationExample example);
+    int updateByExample(@Param("group") Organization group, @Param("example") OrganizationExample example);
 
-    int updateByPrimaryKeySelective(Organization record);
+    int updateByPrimaryKeySelective(Organization group);
 
-    int updateByPrimaryKey(Organization record);
+    int updateByPrimaryKey(Organization group);
 }

@@ -3,28 +3,49 @@ package com.fanyi.andnow.organization.group.mapper;
 import com.fanyi.andnow.common.vo.organization.Group;
 import com.fanyi.andnow.organization.group.service.GroupExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
+/**
+ * 集团信息数据层
+ *
+ * @author wangyds
+ * @date 2019/7/1
+ */
+@Mapper
 public interface GroupMapper {
-    int countByExample(GroupExample example);
+    /**
+     * 新增集团信息
+     * @param group 集团信息
+     * @return 返回影响行数
+     */
+    int insertGroup(Group group);
 
-    int deleteByExample(GroupExample example);
+    /**
+     * 逻辑删除集团信息
+     * @param pkGroup 集团主键
+     * @return 返回影响行数
+     */
+    int deleteGroupByPrimaryKey(Integer pkGroup);
 
-    int deleteByPrimaryKey(Integer pkGroup);
+    /**
+     * 查询集团信息
+     * @param pkGroup 集团主键
+     * @return 返回查找到的集团信息
+     */
+    Group selectGroupByPrimaryKey(Integer pkGroup);
 
-    int insert(Group record);
+    /**
+     * 根据主键更新集团信息，更新不为null的项
+     * @param group 集团信息
+     * @return 返回影响行数
+     */
+    int updateGroupByPrimaryKey(Group group);
 
-    int insertSelective(Group record);
+    /**
+     * 查询所有未逻辑删除的集团信息
+     * @return
+     */
+    List<Group> selectAllGroup();
 
-    List<Group> selectByExample(GroupExample example);
-
-    Group selectByPrimaryKey(Integer pkGroup);
-
-    int updateByExampleSelective(@Param("record") Group record, @Param("example") GroupExample example);
-
-    int updateByExample(@Param("record") Group record, @Param("example") GroupExample example);
-
-    int updateByPrimaryKeySelective(Group record);
-
-    int updateByPrimaryKey(Group record);
 }

@@ -12,19 +12,19 @@ public interface SupplierMapper {
 
     int deleteByPrimaryKey(Integer pkSupplier);
 
-    int insert(Supplier record);
+    int insert(Supplier group);
 
-    int insertSelective(Supplier record);
+    int insertSelective(Supplier group);
 
     List<Supplier> selectByExample(SupplierExample example);
 
     Supplier selectByPrimaryKey(Integer pkSupplier);
 
-    int updateByExampleSelective(@Param("record") Supplier record, @Param("example") SupplierExample example);
+    int updateByExampleSelective(@Param("group") Supplier group, @Param("example") SupplierExample example);
 
-    int updateByExample(@Param("record") Supplier record, @Param("example") SupplierExample example);
+    int updateByExample(@Param("group") Supplier group, @Param("example") SupplierExample example);
 
-    int updateByPrimaryKeySelective(Supplier record);
+    int updateByPrimaryKeySelective(Supplier group);
 
-    int updateByPrimaryKey(Supplier record);
+    int updateByPrimaryKey(Supplier group);
 }

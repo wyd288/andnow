@@ -35,14 +35,14 @@
   </sql>
 
   <select id="selectUserCount" resultType="java.lang.Integer">
-    select count(*) from bd_user where nvl(dr,0) = 0
+    select count(*) from bd_user where dr = 0
   </select>
 
   <select id="selectUserByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from bd_user
-    where pk_user = #{pkUser,jdbcType=INTEGER} and nvl(dr,0) = 0
+    where pk_user = #{pkUser,jdbcType=INTEGER} and dr = 0
   </select>
 
   <delete id="clearDeletedData" parameterType="java.lang.Integer" >

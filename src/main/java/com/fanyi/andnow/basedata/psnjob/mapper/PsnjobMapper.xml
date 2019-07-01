@@ -269,65 +269,65 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update bd_psnjob
     <set >
-      <if test="record.pkPsnjob != null" >
-        pk_psnjob = #{record.pkPsnjob,jdbcType=INTEGER},
+      <if test="group.pkPsnjob != null" >
+        pk_psnjob = #{group.pkPsnjob,jdbcType=INTEGER},
       </if>
-      <if test="record.pkGroup != null" >
-        pk_group = #{record.pkGroup,jdbcType=INTEGER},
+      <if test="group.pkGroup != null" >
+        pk_group = #{group.pkGroup,jdbcType=INTEGER},
       </if>
-      <if test="record.pkOrg != null" >
-        pk_org = #{record.pkOrg,jdbcType=INTEGER},
+      <if test="group.pkOrg != null" >
+        pk_org = #{group.pkOrg,jdbcType=INTEGER},
       </if>
-      <if test="record.psncode != null" >
-        psncode = #{record.psncode,jdbcType=VARCHAR},
+      <if test="group.psncode != null" >
+        psncode = #{group.psncode,jdbcType=VARCHAR},
       </if>
-      <if test="record.pkPsncl != null" >
-        pk_psncl = #{record.pkPsncl,jdbcType=INTEGER},
+      <if test="group.pkPsncl != null" >
+        pk_psncl = #{group.pkPsncl,jdbcType=INTEGER},
       </if>
-      <if test="record.pkDept != null" >
-        pk_dept = #{record.pkDept,jdbcType=INTEGER},
+      <if test="group.pkDept != null" >
+        pk_dept = #{group.pkDept,jdbcType=INTEGER},
       </if>
-      <if test="record.startdutydate != null" >
-        startdutydate = #{record.startdutydate,jdbcType=DATE},
+      <if test="group.startdutydate != null" >
+        startdutydate = #{group.startdutydate,jdbcType=DATE},
       </if>
-      <if test="record.enddutydate != null" >
-        enddutydate = #{record.enddutydate,jdbcType=DATE},
+      <if test="group.enddutydate != null" >
+        enddutydate = #{group.enddutydate,jdbcType=DATE},
       </if>
-      <if test="record.pkJob != null" >
-        pk_job = #{record.pkJob,jdbcType=VARCHAR},
+      <if test="group.pkJob != null" >
+        pk_job = #{group.pkJob,jdbcType=VARCHAR},
       </if>
-      <if test="record.jobname != null" >
-        jobname = #{record.jobname,jdbcType=VARCHAR},
+      <if test="group.jobname != null" >
+        jobname = #{group.jobname,jdbcType=VARCHAR},
       </if>
-      <if test="record.pkPost != null" >
-        pk_post = #{record.pkPost,jdbcType=INTEGER},
+      <if test="group.pkPost != null" >
+        pk_post = #{group.pkPost,jdbcType=INTEGER},
       </if>
-      <if test="record.showorder != null" >
-        showorder = #{record.showorder,jdbcType=INTEGER},
+      <if test="group.showorder != null" >
+        showorder = #{group.showorder,jdbcType=INTEGER},
       </if>
-      <if test="record.enablestate != null" >
-        enablestate = #{record.enablestate,jdbcType=TINYINT},
+      <if test="group.enablestate != null" >
+        enablestate = #{group.enablestate,jdbcType=TINYINT},
       </if>
-      <if test="record.note != null" >
-        note = #{record.note,jdbcType=VARCHAR},
+      <if test="group.note != null" >
+        note = #{group.note,jdbcType=VARCHAR},
       </if>
-      <if test="record.creator != null" >
-        creator = #{record.creator,jdbcType=INTEGER},
+      <if test="group.creator != null" >
+        creator = #{group.creator,jdbcType=INTEGER},
       </if>
-      <if test="record.creationtime != null" >
-        creationtime = #{record.creationtime,jdbcType=TIMESTAMP},
+      <if test="group.creationtime != null" >
+        creationtime = #{group.creationtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.modifier != null" >
-        modifier = #{record.modifier,jdbcType=INTEGER},
+      <if test="group.modifier != null" >
+        modifier = #{group.modifier,jdbcType=INTEGER},
       </if>
-      <if test="record.modifiedtime != null" >
-        modifiedtime = #{record.modifiedtime,jdbcType=TIMESTAMP},
+      <if test="group.modifiedtime != null" >
+        modifiedtime = #{group.modifiedtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.dr != null" >
-        dr = #{record.dr,jdbcType=TINYINT},
+      <if test="group.dr != null" >
+        dr = #{group.dr,jdbcType=TINYINT},
       </if>
-      <if test="record.ts != null" >
-        ts = #{record.ts,jdbcType=TIMESTAMP},
+      <if test="group.ts != null" >
+        ts = #{group.ts,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -336,26 +336,26 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update bd_psnjob
-    set pk_psnjob = #{record.pkPsnjob,jdbcType=INTEGER},
-      pk_group = #{record.pkGroup,jdbcType=INTEGER},
-      pk_org = #{record.pkOrg,jdbcType=INTEGER},
-      psncode = #{record.psncode,jdbcType=VARCHAR},
-      pk_psncl = #{record.pkPsncl,jdbcType=INTEGER},
-      pk_dept = #{record.pkDept,jdbcType=INTEGER},
-      startdutydate = #{record.startdutydate,jdbcType=DATE},
-      enddutydate = #{record.enddutydate,jdbcType=DATE},
-      pk_job = #{record.pkJob,jdbcType=VARCHAR},
-      jobname = #{record.jobname,jdbcType=VARCHAR},
-      pk_post = #{record.pkPost,jdbcType=INTEGER},
-      showorder = #{record.showorder,jdbcType=INTEGER},
-      enablestate = #{record.enablestate,jdbcType=TINYINT},
-      note = #{record.note,jdbcType=VARCHAR},
-      creator = #{record.creator,jdbcType=INTEGER},
-      creationtime = #{record.creationtime,jdbcType=TIMESTAMP},
-      modifier = #{record.modifier,jdbcType=INTEGER},
-      modifiedtime = #{record.modifiedtime,jdbcType=TIMESTAMP},
-      dr = #{record.dr,jdbcType=TINYINT},
-      ts = #{record.ts,jdbcType=TIMESTAMP}
+    set pk_psnjob = #{group.pkPsnjob,jdbcType=INTEGER},
+      pk_group = #{group.pkGroup,jdbcType=INTEGER},
+      pk_org = #{group.pkOrg,jdbcType=INTEGER},
+      psncode = #{group.psncode,jdbcType=VARCHAR},
+      pk_psncl = #{group.pkPsncl,jdbcType=INTEGER},
+      pk_dept = #{group.pkDept,jdbcType=INTEGER},
+      startdutydate = #{group.startdutydate,jdbcType=DATE},
+      enddutydate = #{group.enddutydate,jdbcType=DATE},
+      pk_job = #{group.pkJob,jdbcType=VARCHAR},
+      jobname = #{group.jobname,jdbcType=VARCHAR},
+      pk_post = #{group.pkPost,jdbcType=INTEGER},
+      showorder = #{group.showorder,jdbcType=INTEGER},
+      enablestate = #{group.enablestate,jdbcType=TINYINT},
+      note = #{group.note,jdbcType=VARCHAR},
+      creator = #{group.creator,jdbcType=INTEGER},
+      creationtime = #{group.creationtime,jdbcType=TIMESTAMP},
+      modifier = #{group.modifier,jdbcType=INTEGER},
+      modifiedtime = #{group.modifiedtime,jdbcType=TIMESTAMP},
+      dr = #{group.dr,jdbcType=TINYINT},
+      ts = #{group.ts,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>

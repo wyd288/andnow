@@ -12,19 +12,19 @@ public interface PsndocMapper {
 
     int deleteByPrimaryKey(Integer pkPsndoc);
 
-    int insert(Psndoc record);
+    int insert(Psndoc group);
 
-    int insertSelective(Psndoc record);
+    int insertSelective(Psndoc group);
 
     List<Psndoc> selectByExample(PsndocExample example);
 
     Psndoc selectByPrimaryKey(Integer pkPsndoc);
 
-    int updateByExampleSelective(@Param("record") Psndoc record, @Param("example") PsndocExample example);
+    int updateByExampleSelective(@Param("group") Psndoc group, @Param("example") PsndocExample example);
 
-    int updateByExample(@Param("record") Psndoc record, @Param("example") PsndocExample example);
+    int updateByExample(@Param("group") Psndoc group, @Param("example") PsndocExample example);
 
-    int updateByPrimaryKeySelective(Psndoc record);
+    int updateByPrimaryKeySelective(Psndoc group);
 
-    int updateByPrimaryKey(Psndoc record);
+    int updateByPrimaryKey(Psndoc group);
 }
