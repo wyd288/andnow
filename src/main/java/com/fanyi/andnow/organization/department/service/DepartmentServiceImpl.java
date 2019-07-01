@@ -3,6 +3,7 @@ package com.fanyi.andnow.organization.department.service;
 import com.fanyi.andnow.common.vo.organization.Department;
 import com.fanyi.andnow.organization.department.mapper.DepartmentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @author wangyds
  * @date 2019/7/1
  */
+@Service
 public class DepartmentServiceImpl implements DepartmentService {
 
     @Autowired
