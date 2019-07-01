@@ -3,28 +3,49 @@ package com.fanyi.andnow.organization.department.mapper;
 import com.fanyi.andnow.common.vo.organization.Department;
 import com.fanyi.andnow.organization.department.service.DepartmentExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
+/**
+ * 部门数据映射层
+ *
+ * @author wangyds
+ * @date 2019/7/1
+ */
+@Mapper
 public interface DepartmentMapper {
-    int countByExample(DepartmentExample example);
+    /**
+     * 新增部门信息
+     * @param department 部门信息
+     * @return 返回影响行数
+     */
+    int insertDepartment(Department department);
 
-    int deleteByExample(DepartmentExample example);
+    /**
+     * 逻辑删除部门信息
+     * @param pkDept 部门主键
+     * @return 返回影响行数
+     */
+    int deleteDepartmentByPrimaryKey(Integer pkDept);
 
-    int deleteByPrimaryKey(Integer pkDept);
+    /**
+     * 查询部门信息
+     * @param pkDept 部门主键
+     * @return 返回查找到的部门信息
+     */
+    Department selectDepartmentByPrimaryKey(Integer pkDept);
 
-    int insert(Department group);
+    /**
+     * 根据主键更新部门信息，更新不为null的项
+     * @param department 部门信息
+     * @return 返回影响行数
+     */
+    int updateDepartmentByPrimaryKey(Department department);
 
-    int insertSelective(Department group);
-
-    List<Department> selectByExample(DepartmentExample example);
-
-    Department selectByPrimaryKey(Integer pkDept);
-
-    int updateByExampleSelective(@Param("group") Department group, @Param("example") DepartmentExample example);
-
-    int updateByExample(@Param("group") Department group, @Param("example") DepartmentExample example);
-
-    int updateByPrimaryKeySelective(Department group);
-
-    int updateByPrimaryKey(Department group);
+    /**
+     * 查询所有未逻辑删除的部门信息
+     * @return
+     */
+    List<Department> selectAllDepartment();
+    
 }

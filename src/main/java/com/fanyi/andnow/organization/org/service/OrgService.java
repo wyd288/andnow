@@ -33,7 +33,7 @@ public interface OrgService {
      * @param pkOrg 组织信息主键
      * @return 成功返回true， 失败返回false
      */
-    boolean removeOrg(Integer pkOrg);
+    boolean removeOrgByPrimaryKey(Integer pkOrg);
 
     /**
      * 根据主键查询组织信息

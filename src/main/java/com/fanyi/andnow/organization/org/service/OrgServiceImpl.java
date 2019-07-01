@@ -20,7 +20,7 @@ public class OrgServiceImpl implements OrgService {
     private OrganizationMapper organizationMapper;
 
     @Override
-    public boolean addGroup(Organization org) {
+    public boolean addOrg(Organization org) {
         int row = organizationMapper.insertOrg(org);
         if(row > 0){
             return true;
@@ -29,7 +29,7 @@ public class OrgServiceImpl implements OrgService {
     }
 
     @Override
-    public boolean saveGroup(Organization org) {
+    public boolean saveOrg(Organization org) {
         int row = organizationMapper.updateOrgByPrimaryKey(org);
         if(row > 0){
             return true;
@@ -38,7 +38,7 @@ public class OrgServiceImpl implements OrgService {
     }
 
     @Override
-    public boolean removeGroup(Integer pkOrg) {
+    public boolean removeOrgByPrimaryKey(Integer pkOrg) {
         int row = organizationMapper.deleteOrgByPrimaryKey(pkOrg);
         if(row > 0){
             return true;
@@ -47,12 +47,12 @@ public class OrgServiceImpl implements OrgService {
     }
 
     @Override
-    public Organization getGroupByPrimaryKey(Integer pkOrg) {
+    public Organization getOrgByPrimaryKey(Integer pkOrg) {
         return organizationMapper.selectOrgByPrimaryKey(pkOrg);
     }
 
     @Override
-    public List<Organization> getAllGroup() {
+    public List<Organization> getAllOrg() {
         return organizationMapper.selectAllOrg();
     }
 }

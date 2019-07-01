@@ -38,7 +38,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public boolean removeGroup(Integer pkGroup) {
+    public boolean removeGroupByPrimaryKey(Integer pkGroup) {
         int row = groupMapper.deleteGroupByPrimaryKey(pkGroup);
         if(row > 0){
             return true;

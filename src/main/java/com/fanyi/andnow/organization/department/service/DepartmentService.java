@@ -1,6 +1,6 @@
-package com.fanyi.andnow.organization.group.service;
+package com.fanyi.andnow.organization.department.service;
 
-import com.fanyi.andnow.common.vo.organization.Group;
+import com.fanyi.andnow.common.vo.organization.Department;
 
 import java.util.List;
 
@@ -10,39 +10,38 @@ import java.util.List;
  * @author wangyds
  * @date 2019/7/1
  */
-public interface GroupService {
+public interface DepartmentService {
     /**
      * 添加集团信息
-     * @param group 集团信息
+     * @param department 集团信息
      * @return 成功返回true，失败返回false
      */
-    boolean addGroup(Group group);
+    boolean addDepartment(Department department);
 
     /**
      * 修改/保存集团信息
-     * @param group 集团信息
+     * @param department 集团信息
      * @return 成功返回true， 失败返回false
      */
-    boolean saveGroup(Group group);
+    boolean saveDepartment(Department department);
 
     /**
      * 逻辑删除集团信息
-     * @param pkGroup 集团信息主键
+     * @param pkDept 集团信息主键
      * @return 成功返回true， 失败返回false
      */
-    boolean removeGroupByPrimaryKey(Integer pkGroup);
+    boolean removeDepartmentByPrimaryKey(Integer pkDept);
 
     /**
      * 根据主键查询集团信息
-     * @param pkGroup 集团信息主键
+     * @param pkDept 集团信息主键
      * @return 集团信息
      */
-    Group getGroupByPrimaryKey(Integer pkGroup);
+    Department getDepartmentByPrimaryKey(Integer pkDept);
 
     /**
      * 查询所有集团信息
      * @return 集团信息集合
      */
-    List<Group> getAllGroup();
-
+    List<Department> getAllDepartment();
 }
