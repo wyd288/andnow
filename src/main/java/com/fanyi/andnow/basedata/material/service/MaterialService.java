@@ -38,5 +38,17 @@ public interface MaterialService {
      */
     int removeMaterialByPk(Integer pkMaterial);
 
+    /**
+     * 获取单个物料
+     * @param pk
+     * @return Material
+     */
+    Material getmaterialOne(Integer pk);
+
+    /**
+     * 获取物料数量
+     * @return int（物料数量）
+     */
+    int getMaterialCount();
 
 }

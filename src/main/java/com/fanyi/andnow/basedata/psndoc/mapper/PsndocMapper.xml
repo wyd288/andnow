@@ -101,6 +101,7 @@
     select
     <include refid="Base_Column_List" />
     from bd_psndoc
+    where dr = '0'
     order by #{orderByClause}
   </select>
 
@@ -394,4 +395,11 @@
     </set>
     where pk_psndoc = #{pkPsndoc,jdbcType=INTEGER}
   </update>
+
+  <!--查询人员数量-->
+  <select id="selectPsndocCount" resultType="java.lang.Integer">
+    select count(*)
+    from bd_psndoc
+    where dr = '0'
+  </select>
 </mapper>

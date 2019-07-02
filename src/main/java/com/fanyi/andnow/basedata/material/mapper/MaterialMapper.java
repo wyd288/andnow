@@ -48,4 +48,11 @@ public interface MaterialMapper {
      */
     int selectMaterialCount();
 
+    /**
+     * 获取单个物料
+     * @param pk
+     * @return Material
+     */
+    Material selectMaterialOne(Integer pk);
+
 }

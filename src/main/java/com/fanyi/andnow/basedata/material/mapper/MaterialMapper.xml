@@ -285,4 +285,15 @@
     where dr = '0'
   </select>
 
+  <select id="selectMaterialOne" resultType="com.fanyi.andnow.common.vo.basedata.Material" >
+    select
+          <include refid="Base_Column_List" />
+    from
+          bd_material
+    where
+          pk_material = #{pkMaterial,jdbcType=INTEGER}
+    AND
+          dr = '0'
+  </select>
+
 </mapper>
