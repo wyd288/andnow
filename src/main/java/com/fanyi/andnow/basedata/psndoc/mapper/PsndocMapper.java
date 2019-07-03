@@ -41,4 +41,10 @@ public interface PsndocMapper {
      */
     int deletePsndocByPrimaryKey(Integer pk);
 
+    /**
+     * 查询人员数量
+     * @return int（数量）
+     */
+    int selectPsndocCount();
+
 }

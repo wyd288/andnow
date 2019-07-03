@@ -37,4 +37,14 @@ public class MaterialServiceImpl implements MaterialService{
     public int removeMaterialByPk(Integer pkMaterial) {
         return materialMapper.deleteMaterialByPk(pkMaterial);
     }
+
+    @Override
+    public Material getmaterialOne(Integer pk) {
+        return materialMapper.selectMaterialOne(pk);
+    }
+
+    @Override
+    public int getMaterialCount() {
+        return materialMapper.selectMaterialCount();
+    }
 }
