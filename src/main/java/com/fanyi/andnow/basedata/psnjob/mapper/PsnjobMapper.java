@@ -3,28 +3,57 @@ package com.fanyi.andnow.basedata.psnjob.mapper;
 import com.fanyi.andnow.common.vo.basedata.Psnjob;
 import com.fanyi.andnow.basedata.psnjob.service.PsnjobExample;
 import java.util.List;
+
+import com.sun.imageio.plugins.common.I18NImpl;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
+@Mapper
 public interface PsnjobMapper {
-    int countByExample(PsnjobExample example);
 
-    int deleteByExample(PsnjobExample example);
+    /**
+     * 查询所有工作信息
+     * @return List（工作信息）
+     */
+    List<Psnjob> selectPsnjobList();
 
-    int deleteByPrimaryKey(Integer pkPsnjob);
+    /**
+     * 查询单个工作信息
+     * @param pk
+     * @return Psnjob
+     */
+    Psnjob selectPsnjobOne(Integer pk);
 
-    int insert(Psnjob group);
+    /**
+     * 添加工作信息
+     * @param psnjob
+     * @return 大于0成功小于0失败
+     */
+    int insertPsnjob(Psnjob psnjob);
 
-    int insertSelective(Psnjob group);
+    /**
+     * 更新工作信息
+     * @param psnjob
+     * @return 大于0成功小于0失败
+     */
+    int updatePsnjob(Psnjob psnjob);
 
-    List<Psnjob> selectByExample(PsnjobExample example);
+    /**
+     * 查询工作数量
+     * @return int（数量）
+     */
+    int selectPsnjobCount();
 
-    Psnjob selectByPrimaryKey(Integer pkPsnjob);
+    /**
+     * 根据主键删除工作信息
+     * @param pk
+     * @return 大于0成功小于0失败
+     */
+    int deletePsnjobBypk(Integer pk);
 
-    int updateByExampleSelective(@Param("group") Psnjob group, @Param("example") PsnjobExample example);
+    /**
+     * 物理删除工作信息
+     * @return 大于0成功小于0失败
+     */
+    int deletePsnjob();
 
-    int updateByExample(@Param("group") Psnjob group, @Param("example") PsnjobExample example);
-
-    int updateByPrimaryKeySelective(Psnjob group);
-
-    int updateByPrimaryKey(Psnjob group);
 }

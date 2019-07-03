@@ -86,54 +86,27 @@
     pk_job, jobname, pk_post, showorder, enablestate, note, creator, creationtime, modifier, 
     modifiedtime, dr, ts
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fanyi.andnow.basedata.psnjob.service.PsnjobExample" >
+
+  <!--查询所有工作信息-->
+  <select id="selectPsnjob" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
-      distinct
-    </if>
-    'true' as QUERYID,
     <include refid="Base_Column_List" />
     from bd_psnjob
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
+    where dr = '0'
+    order by #{pkPsnjob,jdbcType=INTEGER}
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+
+  <!--根据主键查询工作信息-->
+  <select id="selectPsnjobByPk" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from bd_psnjob
     where pk_psnjob = #{pkPsnjob,jdbcType=INTEGER}
+    AND dr = '0'
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from bd_psnjob
-    where pk_psnjob = #{pkPsnjob,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.fanyi.andnow.basedata.psnjob.service.PsnjobExample" >
-    delete from bd_psnjob
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.fanyi.andnow.common.vo.basedata.Psnjob" >
-    insert into bd_psnjob (pk_psnjob, pk_group, pk_org, 
-      psncode, pk_psncl, pk_dept, 
-      startdutydate, enddutydate, pk_job, 
-      jobname, pk_post, showorder, 
-      enablestate, note, creator, 
-      creationtime, modifier, modifiedtime, 
-      dr, ts)
-    values (#{pkPsnjob,jdbcType=INTEGER}, #{pkGroup,jdbcType=INTEGER}, #{pkOrg,jdbcType=INTEGER}, 
-      #{psncode,jdbcType=VARCHAR}, #{pkPsncl,jdbcType=INTEGER}, #{pkDept,jdbcType=INTEGER}, 
-      #{startdutydate,jdbcType=DATE}, #{enddutydate,jdbcType=DATE}, #{pkJob,jdbcType=VARCHAR}, 
-      #{jobname,jdbcType=VARCHAR}, #{pkPost,jdbcType=INTEGER}, #{showorder,jdbcType=INTEGER}, 
-      #{enablestate,jdbcType=TINYINT}, #{note,jdbcType=VARCHAR}, #{creator,jdbcType=INTEGER}, 
-      #{creationtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER}, #{modifiedtime,jdbcType=TIMESTAMP}, 
-      #{dr,jdbcType=TINYINT}, #{ts,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.fanyi.andnow.common.vo.basedata.Psnjob" >
+
+  <!--添加工作信息-->
+  <insert id="insertPsnjob" parameterType="com.fanyi.andnow.common.vo.basedata.Psnjob" >
     insert into bd_psnjob
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="pkPsnjob != null" >
@@ -260,13 +233,9 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fanyi.andnow.basedata.psnjob.service.PsnjobExample" resultType="java.lang.Integer" >
-    select count(*) from bd_psnjob
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+
+  <!--更新工作信息-->
+  <update id="updatePsnjob" parameterType="com.fanyi.andnow.common.vo.basedata.Psnjob" >
     update bd_psnjob
     <set >
       <if test="group.pkPsnjob != null" >
@@ -330,120 +299,27 @@
         ts = #{group.ts,jdbcType=TIMESTAMP},
       </if>
     </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update bd_psnjob
-    set pk_psnjob = #{group.pkPsnjob,jdbcType=INTEGER},
-      pk_group = #{group.pkGroup,jdbcType=INTEGER},
-      pk_org = #{group.pkOrg,jdbcType=INTEGER},
-      psncode = #{group.psncode,jdbcType=VARCHAR},
-      pk_psncl = #{group.pkPsncl,jdbcType=INTEGER},
-      pk_dept = #{group.pkDept,jdbcType=INTEGER},
-      startdutydate = #{group.startdutydate,jdbcType=DATE},
-      enddutydate = #{group.enddutydate,jdbcType=DATE},
-      pk_job = #{group.pkJob,jdbcType=VARCHAR},
-      jobname = #{group.jobname,jdbcType=VARCHAR},
-      pk_post = #{group.pkPost,jdbcType=INTEGER},
-      showorder = #{group.showorder,jdbcType=INTEGER},
-      enablestate = #{group.enablestate,jdbcType=TINYINT},
-      note = #{group.note,jdbcType=VARCHAR},
-      creator = #{group.creator,jdbcType=INTEGER},
-      creationtime = #{group.creationtime,jdbcType=TIMESTAMP},
-      modifier = #{group.modifier,jdbcType=INTEGER},
-      modifiedtime = #{group.modifiedtime,jdbcType=TIMESTAMP},
-      dr = #{group.dr,jdbcType=TINYINT},
-      ts = #{group.ts,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.common.vo.basedata.Psnjob" >
-    update bd_psnjob
-    <set >
-      <if test="pkGroup != null" >
-        pk_group = #{pkGroup,jdbcType=INTEGER},
-      </if>
-      <if test="pkOrg != null" >
-        pk_org = #{pkOrg,jdbcType=INTEGER},
-      </if>
-      <if test="psncode != null" >
-        psncode = #{psncode,jdbcType=VARCHAR},
-      </if>
-      <if test="pkPsncl != null" >
-        pk_psncl = #{pkPsncl,jdbcType=INTEGER},
-      </if>
-      <if test="pkDept != null" >
-        pk_dept = #{pkDept,jdbcType=INTEGER},
-      </if>
-      <if test="startdutydate != null" >
-        startdutydate = #{startdutydate,jdbcType=DATE},
-      </if>
-      <if test="enddutydate != null" >
-        enddutydate = #{enddutydate,jdbcType=DATE},
-      </if>
-      <if test="pkJob != null" >
-        pk_job = #{pkJob,jdbcType=VARCHAR},
-      </if>
-      <if test="jobname != null" >
-        jobname = #{jobname,jdbcType=VARCHAR},
-      </if>
-      <if test="pkPost != null" >
-        pk_post = #{pkPost,jdbcType=INTEGER},
-      </if>
-      <if test="showorder != null" >
-        showorder = #{showorder,jdbcType=INTEGER},
-      </if>
-      <if test="enablestate != null" >
-        enablestate = #{enablestate,jdbcType=TINYINT},
-      </if>
-      <if test="note != null" >
-        note = #{note,jdbcType=VARCHAR},
-      </if>
-      <if test="creator != null" >
-        creator = #{creator,jdbcType=INTEGER},
-      </if>
-      <if test="creationtime != null" >
-        creationtime = #{creationtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifier != null" >
-        modifier = #{modifier,jdbcType=INTEGER},
-      </if>
-      <if test="modifiedtime != null" >
-        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="dr != null" >
-        dr = #{dr,jdbcType=TINYINT},
-      </if>
-      <if test="ts != null" >
-        ts = #{ts,jdbcType=TIMESTAMP},
-      </if>
-    </set>
     where pk_psnjob = #{pkPsnjob,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.common.vo.basedata.Psnjob" >
+
+  <!--根据主键删除工作信息-->
+  <update id="deletePsnjobByPk" parameterType="java.lang.Integer" >
     update bd_psnjob
-    set pk_group = #{pkGroup,jdbcType=INTEGER},
-      pk_org = #{pkOrg,jdbcType=INTEGER},
-      psncode = #{psncode,jdbcType=VARCHAR},
-      pk_psncl = #{pkPsncl,jdbcType=INTEGER},
-      pk_dept = #{pkDept,jdbcType=INTEGER},
-      startdutydate = #{startdutydate,jdbcType=DATE},
-      enddutydate = #{enddutydate,jdbcType=DATE},
-      pk_job = #{pkJob,jdbcType=VARCHAR},
-      jobname = #{jobname,jdbcType=VARCHAR},
-      pk_post = #{pkPost,jdbcType=INTEGER},
-      showorder = #{showorder,jdbcType=INTEGER},
-      enablestate = #{enablestate,jdbcType=TINYINT},
-      note = #{note,jdbcType=VARCHAR},
-      creator = #{creator,jdbcType=INTEGER},
-      creationtime = #{creationtime,jdbcType=TIMESTAMP},
-      modifier = #{modifier,jdbcType=INTEGER},
-      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
-      dr = #{dr,jdbcType=TINYINT},
-      ts = #{ts,jdbcType=TIMESTAMP}
+    set dr = '1'
     where pk_psnjob = #{pkPsnjob,jdbcType=INTEGER}
   </update>
+
+  <!--物理删除工作信息-->
+  <delete id="deletePsnjob" >
+    delete from bd_psnjob
+    where dr = '1'
+  </delete>
+
+  <!--查询工作个数-->
+  <select id="selectPsnjobCount" resultType="java.lang.Integer" >
+    select count(*)
+    from bd_psnjob
+    where dr = '0'
+  </select>
+
 </mapper>
