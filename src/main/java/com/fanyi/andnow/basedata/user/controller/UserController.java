@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * @date 2019/6/17 8:58
  */
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -25,7 +26,7 @@ public class UserController {
      * @param res
      * @return
      */
-    @GetMapping(value="/getUser")
+    @GetMapping(value="/get")
     public User getUsers(HttpServletResponse res){
         User user ;
         user = userService.getUser();
@@ -33,12 +34,13 @@ public class UserController {
     }
 
     /**
-     * 添加用户
+     * 添加用户信息
      * @param user（用户）
      * @return int （大于0成功，小于0失败。）
      */
-    @PostMapping("/addUser")
+    @PostMapping("/add")
     public int addUserVo(@RequestBody User user){
+        user.getCode();
         return userService.addUser(user);
     }
 
