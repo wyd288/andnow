@@ -5,6 +5,8 @@ import com.fanyi.andnow.common.vo.basedata.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 /**
  * 此处文件添加描述
@@ -37,6 +39,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public int saveUser(User user) {
         return 0;
+    }
+
+    @Override
+    public User getLoginUser(String code, String password) {
+        return userMapper.selectLoginUser(code,password);
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        return userMapper.selectAllUser();
     }
 
 

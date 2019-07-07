@@ -54,5 +54,18 @@ public interface UserMapper {
      */
     int selectUserCount();
 
+    /**
+     * 根据用户编码和密码获取登陆用户
+     * @param code  用户编码
+     * @param password  用户密码
+     * @return  用户
+     */
+    User selectLoginUser(String code,String password);
+
+    /**
+     *
+     * @return
+     */
+    List<User> selectAllUser();
 
 }

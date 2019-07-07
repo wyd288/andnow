@@ -3,10 +3,12 @@ package com.fanyi.andnow.basedata.user.controller;
 
 import com.fanyi.andnow.basedata.user.service.UserService;
 import com.fanyi.andnow.common.vo.basedata.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * 用户控制层
@@ -27,10 +29,8 @@ public class UserController {
      * @return
      */
     @GetMapping(value="/get")
-    public User getUsers(HttpServletResponse res){
-        User user ;
-        user = userService.getUser();
-        return user;
+    public User getUsers(){
+        return userService.getUser();
     }
 
     /**
@@ -39,15 +39,23 @@ public class UserController {
      * @return int （大于0成功，小于0失败。）
      */
     @PostMapping("/add")
-    public int addUserVo(@RequestBody User user){
-        user.getCode();
+    public int addUser(@RequestBody User user){
         return userService.addUser(user);
     }
 
-    @GetMapping("/getUserCount")
+    @GetMapping("/count")
     public int getUserCount(){
         return userService.getUserCount();
     }
 
+    @GetMapping("/login")
+    public User getLoginUser(@Param("code") String code,@Param("password") String password){
+        return userService.getLoginUser(code,password);
+    }
+
+    @GetMapping("/all")
+    public List<User> getAllUser(){
+        return userService.getAllUser();
+    }
 
 }

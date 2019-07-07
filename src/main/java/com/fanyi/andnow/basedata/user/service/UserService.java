@@ -2,6 +2,9 @@ package com.fanyi.andnow.basedata.user.service;
 
 import com.fanyi.andnow.common.vo.basedata.User;
 
+import javax.validation.constraints.Null;
+import java.util.List;
+
 /**
  * 用户服务层
  *
@@ -36,4 +39,17 @@ public interface UserService {
      */
     int saveUser(User user);
 
+    /**
+     * 根据用户编码和密码获取登陆用户
+     * @param code  用户编码
+     * @param password  用户密码
+     * @return  用户
+     */
+    User getLoginUser(String code,String password);
+
+    /**
+     * 获取所有用户信息
+     * @return
+     */
+    List<User> getAllUser();
 }

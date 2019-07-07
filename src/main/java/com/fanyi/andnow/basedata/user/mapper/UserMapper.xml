@@ -45,6 +45,20 @@
     where pk_user = #{pkUser,jdbcType=INTEGER} and dr = 0
   </select>
 
+  <select id="selectLoginUser" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bd_user
+    where code = #{code} and password = #{password} and dr = 0
+  </select>
+
+  <select id="selectAllUser" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bd_user
+    where dr = 0
+  </select>
+
   <delete id="clearDeletedData" parameterType="java.lang.Integer" >
     delete from bd_user
     where dr = 1
