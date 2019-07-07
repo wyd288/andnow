@@ -1,7 +1,7 @@
 package com.fanyi.andnow.basedata.user.mapper;
 
 import com.fanyi.andnow.common.vo.basedata.User;
-import com.fanyi.andnow.basedata.user.service.UserExample;
+
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;

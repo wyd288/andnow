@@ -24,13 +24,14 @@ public class UserController {
     private UserService userService;
 
     /**
-     * 前端获取数据测试接口
-     * @param res
+     * 根据主键获取用户信息
+     * @param pkUser 用户主键
      * @return
      */
-    @GetMapping(value="/get")
-    public User getUsers(){
-        return userService.getUser();
+    @GetMapping(value="/{pkUser}")
+    public User getUser(@PathVariable("pkUser") Integer pkUser){
+
+        return userService.getUser(pkUser);
     }
 
     /**
@@ -49,8 +50,12 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public User getLoginUser(@Param("code") String code,@Param("password") String password){
-        return userService.getLoginUser(code,password);
+    public String doLogin(@Param("code") String code,@Param("password") String password){
+        User user = userService.getLoginUser(code,password);
+        if(user != null){
+            return "success";
+        }
+        return "failure";
     }
 
     @GetMapping("/all")

@@ -17,7 +17,7 @@ public interface UserService {
      * 获取所有用户
      * @return
      */
-    User getUser();
+    User getUser(Integer pkUser);
 
     /**
      * 添加用户

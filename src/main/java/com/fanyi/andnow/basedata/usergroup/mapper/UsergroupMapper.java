@@ -1,6 +1,6 @@
 package com.fanyi.andnow.basedata.usergroup.mapper;
 
-import com.fanyi.andnow.common.vo.basedata.Usergroup;
+import com.fanyi.andnow.common.vo.basedata.UserGroup;
 import com.fanyi.andnow.basedata.usergroup.service.UsergroupExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -12,19 +12,19 @@ public interface UsergroupMapper {
 
     int deleteByPrimaryKey(Integer pkUsergroup);
 
-    int insert(Usergroup group);
+    int insert(UserGroup group);
 
-    int insertSelective(Usergroup group);
+    int insertSelective(UserGroup group);
 
-    List<Usergroup> selectByExample(UsergroupExample example);
+    List<UserGroup> selectByExample(UsergroupExample example);
 
-    Usergroup selectByPrimaryKey(Integer pkUsergroup);
+    UserGroup selectByPrimaryKey(Integer pkUsergroup);
 
-    int updateByExampleSelective(@Param("group") Usergroup group, @Param("example") UsergroupExample example);
+    int updateByExampleSelective(@Param("group") UserGroup group, @Param("example") UsergroupExample example);
 
-    int updateByExample(@Param("group") Usergroup group, @Param("example") UsergroupExample example);
+    int updateByExample(@Param("group") UserGroup group, @Param("example") UsergroupExample example);
 
-    int updateByPrimaryKeySelective(Usergroup group);
+    int updateByPrimaryKeySelective(UserGroup group);
 
-    int updateByPrimaryKey(Usergroup group);
+    int updateByPrimaryKey(UserGroup group);
 }
