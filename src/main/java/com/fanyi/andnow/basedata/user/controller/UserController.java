@@ -49,14 +49,7 @@ public class UserController {
         return userService.getUserCount();
     }
 
-    @GetMapping("/login")
-    public String doLogin(@Param("code") String code,@Param("password") String password){
-        User user = userService.getLoginUser(code,password);
-        if(user != null){
-            return "success";
-        }
-        return "failure";
-    }
+
 
     @GetMapping("/all")
     public List<User> getAllUser(){
