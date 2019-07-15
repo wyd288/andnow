@@ -5,6 +5,7 @@ import com.fanyi.andnow.common.vo.basedata.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -28,6 +29,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int addUser(User user) {
+        User userTemp = user;
+        userTemp.setPkGroup(1);
+        userTemp.setPkOrg(1);
+        userTemp.setName("测试名称");
+        userTemp.setCreator(1);
+        userTemp.setCreationtime(new Date());
+        userTemp.setTs(new Date());
         return userMapper.insertUser(user);
     }
 

@@ -23,17 +23,17 @@ public class User {
 
     private String password;
 
-    private Byte pwdlevel;
+    private Integer pwdlevel;
 
     private String pwdparam;
 
-    private Byte identityverifycode;
+    private Integer identityverifycode;
 
     private Date enabledate;
 
     private Date disabledate;
 
-    private Byte islocked;
+    private Integer islocked;
 
     private Integer pkPsndoc;
 
@@ -43,7 +43,7 @@ public class User {
 
     private Date pkUsergroup;
 
-    private Byte enablestate;
+    private Integer enablestate;
 
     private String note;
 
@@ -55,7 +55,7 @@ public class User {
 
     private Date modifiedtime;
 
-    private Byte dr;
+    private Integer dr;
 
     private Date ts;
 

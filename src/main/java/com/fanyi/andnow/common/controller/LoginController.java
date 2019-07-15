@@ -21,9 +21,9 @@ public class LoginController {
 
     /**
      * 获取登陆用户信息
-     * @param code
-     * @param password
-     * @return
+     * @param code  用户编码
+     * @param password  用户编码
+     * @return  返回用户主键
      */
     @GetMapping("/login")
     public Integer doLogin(@Param("code") String code, @Param("password") String password){

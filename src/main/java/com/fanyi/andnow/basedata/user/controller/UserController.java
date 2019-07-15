@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,8 +40,11 @@ public class UserController {
      * @param user（用户）
      * @return int （大于0成功，小于0失败。）
      */
-    @PostMapping("/add")
+    @PostMapping()
     public int addUser(@RequestBody User user){
+        if(user == null){
+            return -1;
+        }
         return userService.addUser(user);
     }
 
