@@ -1,0 +1,14 @@
+# 开发环境配置
+spring:
+  profiles: dev
+  # 配置数据源
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://www.fan1111.com:3306/dbscm?useSSL=false
+    username: dbscm
+    password: 1234
+    type: com.alibaba.druid.pool.DruidDataSource
+
+#配置集成tomcat的端口，可自行修改
+server:
+  port: 2888
