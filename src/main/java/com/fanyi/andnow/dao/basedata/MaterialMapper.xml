@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fanyi.andnow.dao.basedata.MaterialMapper" >
+  <resultMap id="BaseResultMap" type="com.fanyi.andnow.entity.basedata.Material" >
+    <id column="pk_material" property="pkMaterial" jdbcType="INTEGER" />
+    <result column="pk_group" property="pkGroup" jdbcType="INTEGER" />
+    <result column="pk_org" property="pkOrg" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="specification" property="specification" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="shortname" property="shortname" jdbcType="VARCHAR" />
+    <result column="mnecode" property="mnecode" jdbcType="VARCHAR" />
+    <result column="pk_measdoc" property="pkMeasdoc" jdbcType="INTEGER" />
+    <result column="pk_marbasclass" property="pkMarbasclass" jdbcType="INTEGER" />
+    <result column="pk_prodline" property="pkProdline" jdbcType="INTEGER" />
+    <result column="pk_brand" property="pkBrand" jdbcType="INTEGER" />
+    <result column="discountflag" property="discountflag" jdbcType="DOUBLE" />
+    <result column="unitlenth" property="unitlenth" jdbcType="DOUBLE" />
+    <result column="unitheight" property="unitheight" jdbcType="DOUBLE" />
+    <result column="unitwidth" property="unitwidth" jdbcType="DOUBLE" />
+    <result column="unitvolume" property="unitvolume" jdbcType="DOUBLE" />
+    <result column="unitweight" property="unitweight" jdbcType="DOUBLE" />
+    <result column="retailprice" property="retailprice" jdbcType="DECIMAL" />
+    <result column="costprice" property="costprice" jdbcType="DECIMAL" />
+    <result column="enablestate" property="enablestate" jdbcType="TINYINT" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="creationtime" property="creationtime" jdbcType="TIMESTAMP" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="modifiedtime" property="modifiedtime" jdbcType="TIMESTAMP" />
+    <result column="dr" property="dr" jdbcType="TINYINT" />
+    <result column="ts" property="ts" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pk_material, pk_group, pk_org, code, name, version, specification, type, shortname, 
+    mnecode, pk_measdoc, pk_marbasclass, pk_prodline, pk_brand, discountflag, unitlenth, 
+    unitheight, unitwidth, unitvolume, unitweight, retailprice, costprice, enablestate, 
+    note, creator, creationtime, modifier, modifiedtime, dr, ts
+  </sql>
+
+  <!--查询所有物料-->
+  <select id="selectMaterial" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />
+    from bd_material
+    where dr = '0'
+  </select>
+
+  <!--添加物料信息-->
+  <insert id="insertMaterial" parameterType="com.fanyi.andnow.entity.basedata.Material" >
+    insert into bd_material
+      <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="pkGroup != null">pk_group,</if>
+        <if test="pkOrg != null">pk_org,</if>
+        <if test="code != null">code,</if>
+        <if test="name != null">name,</if>
+        <if test="version != null">version,</if>
+        <if test="specification != null">specification,</if>
+        <if test="type != null">type,</if>
+        <if test="shortname != null">shortname,</if>
+        <if test="mnecode != null">mnecode,</if>
+        <if test="pkMeasdoc != null">pk_measdoc,</if>
+        <if test="pkMarbasclass != null">pk_marbasclass,</if>
+        <if test="pkProdline != null">pk_prodline,</if>
+        <if test="pkBrand != null">pk_brand,</if>
+        <if test="discountflag != null">discountflag,</if>
+        <if test="unitlenth != null">unitlenth,</if>
+        <if test="unitheight != null">unitheight,</if>
+        <if test="unitwidth != null">unitwidth,</if>
+        <if test="unitvolume != null">unitvolume,</if>
+        <if test="unitweight != null">unitweight,</if>
+        <if test="retailprice != null">retailprice,</if>
+        <if test="costprice != null">costprice,</if>
+        <if test="enablestate != null">enablestate,</if>
+        <if test="note != null">note,</if>
+        <if test="creator != null">creator,</if>
+        <if test="creationtime != null">creationtime,</if>
+        <if test="modifier != null">modifier,</if>
+        <if test="modifiedtime != null">modifiedtime,</if>
+        <if test="dr != null">dr,</if>
+        <if test="ts != null">ts,</if>
+      </trim>
+      <trim prefix="values (" suffix=")" suffixOverrides=",">
+        <if test="pkGroup != null">#{pkGroup,jdbcType=INTEGER},</if>
+        <if test="pkOrg != null">#{pkOrg,jdbcType=INTEGER},</if>
+        <if test="code != null">#{code,jdbcType=VARCHAR},</if>
+        <if test="name != null">#{name,jdbcType=VARCHAR},</if>
+        <if test="version != null">#{version,jdbcType=VARCHAR},</if>
+        <if test="specification != null">#{specification,jdbcType=VARCHAR},</if>
+        <if test="type != null">#{type,jdbcType=VARCHAR},</if>
+        <if test="shortname != null">#{shortname,jdbcType=VARCHAR},</if>
+        <if test="mnecode != null">#{mnecode,jdbcType=VARCHAR},</if>
+        <if test="pkMeasdoc != null">#{pkMeasdoc,jdbcType=INTEGER},</if>
+        <if test="pkMarbasclass != null">#{pkMarbasclass,jdbcType=INTEGER},</if>
+        <if test="pkProdline != null">#{pkProdline,jdbcType=INTEGER},</if>
+        <if test="pkBrand != null">#{pkBrand,jdbcType=INTEGER},</if>
+        <if test="discountflag != null">#{discountflag,jdbcType=DOUBLE},</if>
+        <if test="unitlenth != null">#{unitlenth,jdbcType=DOUBLE},</if>
+        <if test="unitheight != null">#{unitheight,jdbcType=DOUBLE},</if>
+        <if test="unitwidth != null">#{unitwidth,jdbcType=DOUBLE},</if>
+        <if test="unitvolume != null">#{unitvolume,jdbcType=DOUBLE},</if>
+        <if test="unitweight != null">#{unitweight,jdbcType=DOUBLE},</if>
+        <if test="retailprice != null">#{retailprice,jdbcType=DECIMAL},</if>
+        <if test="costprice != null">#{costprice,jdbcType=DECIMAL},</if>
+        <if test="enablestate != null">#{enablestate,jdbcType=TINYINT},</if>
+        <if test="note != null">#{note,jdbcType=VARCHAR},</if>
+        <if test="creator != null">#{creator,jdbcType=INTEGER},</if>
+        <if test="creationtime != null">#{creationtime,jdbcType=TIMESTAMP},</if>
+        <if test="modifier != null">#{modifier,jdbcType=INTEGER},</if>
+        <if test="modifiedtime != null">#{modifiedtime,jdbcType=TIMESTAMP},</if>
+        <if test="dr != null">#{dr,jdbcType=TINYINT},</if>
+        <if test="ts != null">#{ts,jdbcType=TIMESTAMP},</if>
+      </trim>
+  </insert>
+
+  <!--更新物料信息-->
+  <update id="updateMaterialByPk" parameterType="com.fanyi.andnow.entity.basedata.Material" >
+    update bd_material
+    <set>
+      <if test="pkGroup != null" >
+        pk_group = #{pkGroup,jdbcType=INTEGER},
+      </if>
+      <if test="pkOrg != null" >
+        pk_org = #{pkOrg,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="specification != null" >
+        specification = #{specification,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="shortname != null" >
+        shortname = #{shortname,jdbcType=VARCHAR},
+      </if>
+      <if test="mnecode != null" >
+        mnecode = #{mnecode,jdbcType=VARCHAR},
+      </if>
+      <if test="pkMeasdoc != null" >
+        pk_measdoc = #{pkMeasdoc,jdbcType=INTEGER},
+      </if>
+      <if test="pkMarbasclass != null" >
+        pk_marbasclass = #{pkMarbasclass,jdbcType=INTEGER},
+      </if>
+      <if test="pkProdline != null" >
+        pk_prodline = #{pkProdline,jdbcType=INTEGER},
+      </if>
+      <if test="pkBrand != null" >
+        pk_brand = #{pkBrand,jdbcType=INTEGER},
+      </if>
+      <if test="discountflag != null" >
+        discountflag = #{discountflag,jdbcType=DOUBLE},
+      </if>
+      <if test="unitlenth != null" >
+        unitlenth = #{unitlenth,jdbcType=DOUBLE},
+      </if>
+      <if test="unitheight != null" >
+        unitheight = #{unitheight,jdbcType=DOUBLE},
+      </if>
+      <if test="unitwidth != null" >
+        unitwidth = #{unitwidth,jdbcType=DOUBLE},
+      </if>
+      <if test="unitvolume != null" >
+        unitvolume = #{unitvolume,jdbcType=DOUBLE},
+      </if>
+      <if test="unitweight != null" >
+        unitweight = #{unitweight,jdbcType=DOUBLE},
+      </if>
+      <if test="retailprice != null" >
+        retailprice = #{retailprice,jdbcType=DECIMAL},
+      </if>
+      <if test="costprice != null" >
+        costprice = #{costprice,jdbcType=DECIMAL},
+      </if>
+      <if test="enablestate != null" >
+        enablestate = #{enablestate,jdbcType=TINYINT},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="creationtime != null" >
+        creationtime = #{creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dr != null" >
+        dr = #{dr,jdbcType=TINYINT},
+      </if>
+      <if test="ts != null" >
+        ts = #{ts,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where
+    <if test="pkMaterial != null" >
+    pk_material = #{pkMaterial,jdbcType=INTEGER}
+    </if>
+  </update>
+
+  <!--根据主键物理删除物料-->
+  <delete id="deleteMaterialByPk" parameterType="java.lang.Integer" >
+    update bd_material
+    set dr = '1'
+    where pk_material = #{pkMaterial,jdbcType=INTEGER}
+  </delete>
+
+  <!--查询物料数量-->
+  <select id="selectMaterialCount" resultType="java.lang.Integer">
+    select count(*)
+    from bd_material
+    where dr = '0'
+  </select>
+
+  <select id="selectMaterialOne" resultType="com.fanyi.andnow.entity.basedata.Material" >
+    select
+          <include refid="Base_Column_List" />
+    from
+          bd_material
+    where
+          pk_material = #{pkMaterial,jdbcType=INTEGER}
+    AND
+          dr = '0'
+  </select>
+
+</mapper>

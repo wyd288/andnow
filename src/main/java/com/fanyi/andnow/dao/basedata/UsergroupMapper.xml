@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fanyi.andnow.dao.basedata.UsergroupMapper" >
+  <resultMap id="BaseResultMap" type="com.fanyi.andnow.entity.basedata.UserGroup" >
+    <id column="pk_usergroup" property="pkUsergroup" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="innercode" property="innercode" jdbcType="VARCHAR" />
+    <result column="pk_superior" property="pkSuperior" jdbcType="INTEGER" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="enablestate" property="enablestate" jdbcType="TINYINT" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="creationtime" property="creationtime" jdbcType="TIMESTAMP" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="modifiedtime" property="modifiedtime" jdbcType="TIMESTAMP" />
+    <result column="dr" property="dr" jdbcType="TINYINT" />
+    <result column="ts" property="ts" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pk_usergroup, code, name, innercode, pk_superior, version, enablestate, note, creator, 
+    creationtime, modifier, modifiedtime, dr, ts
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fanyi.andnow.dao.usergroup.service.UsergroupExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from bd_usergroup
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bd_usergroup
+    where pk_usergroup = #{pkUsergroup,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bd_usergroup
+    where pk_usergroup = #{pkUsergroup,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fanyi.andnow.dao.usergroup.service.UsergroupExample" >
+    delete from bd_usergroup
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fanyi.andnow.entity.basedata.UserGroup" >
+    insert into bd_usergroup (pk_usergroup, code, name, 
+      innercode, pk_superior, version, 
+      enablestate, note, creator, 
+      creationtime, modifier, modifiedtime, 
+      dr, ts)
+    values (#{pkUsergroup,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{innercode,jdbcType=VARCHAR}, #{pkSuperior,jdbcType=INTEGER}, #{version,jdbcType=VARCHAR}, 
+      #{enablestate,jdbcType=TINYINT}, #{note,jdbcType=VARCHAR}, #{creator,jdbcType=INTEGER}, 
+      #{creationtime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER}, #{modifiedtime,jdbcType=TIMESTAMP}, 
+      #{dr,jdbcType=TINYINT}, #{ts,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fanyi.andnow.entity.basedata.UserGroup" >
+    insert into bd_usergroup
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkUsergroup != null" >
+        pk_usergroup,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="innercode != null" >
+        innercode,
+      </if>
+      <if test="pkSuperior != null" >
+        pk_superior,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="enablestate != null" >
+        enablestate,
+      </if>
+      <if test="note != null" >
+        note,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="creationtime != null" >
+        creationtime,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime,
+      </if>
+      <if test="dr != null" >
+        dr,
+      </if>
+      <if test="ts != null" >
+        ts,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkUsergroup != null" >
+        #{pkUsergroup,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="innercode != null" >
+        #{innercode,jdbcType=VARCHAR},
+      </if>
+      <if test="pkSuperior != null" >
+        #{pkSuperior,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="enablestate != null" >
+        #{enablestate,jdbcType=TINYINT},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="creationtime != null" >
+        #{creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedtime != null" >
+        #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dr != null" >
+        #{dr,jdbcType=TINYINT},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fanyi.andnow.dao.usergroup.service.UsergroupExample" resultType="java.lang.Integer" >
+    select count(*) from bd_usergroup
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update bd_usergroup
+    <set >
+      <if test="group.pkUsergroup != null" >
+        pk_usergroup = #{group.pkUsergroup,jdbcType=INTEGER},
+      </if>
+      <if test="group.code != null" >
+        code = #{group.code,jdbcType=VARCHAR},
+      </if>
+      <if test="group.name != null" >
+        name = #{group.name,jdbcType=VARCHAR},
+      </if>
+      <if test="group.innercode != null" >
+        innercode = #{group.innercode,jdbcType=VARCHAR},
+      </if>
+      <if test="group.pkSuperior != null" >
+        pk_superior = #{group.pkSuperior,jdbcType=INTEGER},
+      </if>
+      <if test="group.version != null" >
+        version = #{group.version,jdbcType=VARCHAR},
+      </if>
+      <if test="group.enablestate != null" >
+        enablestate = #{group.enablestate,jdbcType=TINYINT},
+      </if>
+      <if test="group.note != null" >
+        note = #{group.note,jdbcType=VARCHAR},
+      </if>
+      <if test="group.creator != null" >
+        creator = #{group.creator,jdbcType=INTEGER},
+      </if>
+      <if test="group.creationtime != null" >
+        creationtime = #{group.creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="group.modifier != null" >
+        modifier = #{group.modifier,jdbcType=INTEGER},
+      </if>
+      <if test="group.modifiedtime != null" >
+        modifiedtime = #{group.modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="group.dr != null" >
+        dr = #{group.dr,jdbcType=TINYINT},
+      </if>
+      <if test="group.ts != null" >
+        ts = #{group.ts,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update bd_usergroup
+    set pk_usergroup = #{group.pkUsergroup,jdbcType=INTEGER},
+      code = #{group.code,jdbcType=VARCHAR},
+      name = #{group.name,jdbcType=VARCHAR},
+      innercode = #{group.innercode,jdbcType=VARCHAR},
+      pk_superior = #{group.pkSuperior,jdbcType=INTEGER},
+      version = #{group.version,jdbcType=VARCHAR},
+      enablestate = #{group.enablestate,jdbcType=TINYINT},
+      note = #{group.note,jdbcType=VARCHAR},
+      creator = #{group.creator,jdbcType=INTEGER},
+      creationtime = #{group.creationtime,jdbcType=TIMESTAMP},
+      modifier = #{group.modifier,jdbcType=INTEGER},
+      modifiedtime = #{group.modifiedtime,jdbcType=TIMESTAMP},
+      dr = #{group.dr,jdbcType=TINYINT},
+      ts = #{group.ts,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fanyi.andnow.entity.basedata.UserGroup" >
+    update bd_usergroup
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="innercode != null" >
+        innercode = #{innercode,jdbcType=VARCHAR},
+      </if>
+      <if test="pkSuperior != null" >
+        pk_superior = #{pkSuperior,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="enablestate != null" >
+        enablestate = #{enablestate,jdbcType=TINYINT},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="creationtime != null" >
+        creationtime = #{creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dr != null" >
+        dr = #{dr,jdbcType=TINYINT},
+      </if>
+      <if test="ts != null" >
+        ts = #{ts,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pk_usergroup = #{pkUsergroup,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fanyi.andnow.entity.basedata.UserGroup" >
+    update bd_usergroup
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      innercode = #{innercode,jdbcType=VARCHAR},
+      pk_superior = #{pkSuperior,jdbcType=INTEGER},
+      version = #{version,jdbcType=VARCHAR},
+      enablestate = #{enablestate,jdbcType=TINYINT},
+      note = #{note,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=INTEGER},
+      creationtime = #{creationtime,jdbcType=TIMESTAMP},
+      modifier = #{modifier,jdbcType=INTEGER},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      dr = #{dr,jdbcType=TINYINT},
+      ts = #{ts,jdbcType=TIMESTAMP}
+    where pk_usergroup = #{pkUsergroup,jdbcType=INTEGER}
+  </update>
+</mapper>

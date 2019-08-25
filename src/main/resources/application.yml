@@ -7,17 +7,17 @@ spring:
 
 mybatis:
   # 配置mybatis映射的别名
-  type-aliases-package: com.fanyi.andnow.common.vo
+  type-aliases-package: com.fanyi.andnow.entity.vo
 
 # 设置mybatis将sql打印到控制台
-#mybatis.mapper-locations=classpath:com/fanyi/scm/mapper/*.xml
+#mybatis.mapper-locations=classpath:com/fanyi/andnow/mapper/*.xml
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 # 设置将sql打印到控制台，level下配置mapper对应的包名
 #logging:
 #  level:
-#    com.fan1111.mapper: DEBUG
+#    com.fan1111.material: DEBUG
 
 
 
