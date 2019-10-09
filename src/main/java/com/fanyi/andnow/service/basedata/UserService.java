@@ -14,6 +14,7 @@ public interface UserService {
 
     /**
      * 获取所有用户
+     * @param pkUser 用户主键
      * @return
      */
     User getUser(Integer pkUser);

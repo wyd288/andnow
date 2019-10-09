@@ -53,11 +53,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getLoginUser(String code, String password) {
-        if(code.isEmpty() || password.isEmpty()){
-            return null;
-        }
-        User loginUser = userMapper.selectLoginUser(code,password);
-        return loginUser;
+        return userMapper.selectLoginUser(code,password);
     }
 
     @Override
