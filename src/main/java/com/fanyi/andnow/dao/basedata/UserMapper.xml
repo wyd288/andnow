@@ -38,7 +38,7 @@
     select count(*) from bd_user where dr = 0
   </select>
 
-  <select id="selectUserByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectUserByPk" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from bd_user
@@ -64,7 +64,7 @@
     where dr = 1
   </delete>
 
-  <update id="deleteUserByPrimaryKey" parameterType="java.lang.Integer" >
+  <update id="deleteUserByPk" parameterType="java.lang.Integer" >
     update bd_user
     <set>
       dr = 1
@@ -130,7 +130,7 @@
   </insert>
 
 
-  <update id="updateUserByPrimaryKey" parameterType="com.fanyi.andnow.entity.basedata.User" >
+  <update id="updateUserByPk" parameterType="com.fanyi.andnow.entity.basedata.User" >
     update bd_user
     <set >
       <if test="pkGroup != null" >pk_group = #{pkGroup,jdbcType=INTEGER},</if>

@@ -19,7 +19,7 @@ public interface UserMapper {
      * @param pkUser  用户主键
      * @return
      */
-    int deleteUserByPrimaryKey(Integer pkUser);
+    int deleteUserByPk(Integer pkUser);
 
     /**
      * 物理删除已逻辑删除的数据
@@ -39,14 +39,14 @@ public interface UserMapper {
      * @param pkUser  用户主键
      * @return
      */
-    User selectUserByPrimaryKey(Integer pkUser);
+    User selectUserByPk(Integer pkUser);
 
     /**
      * 根据主键更新用户
      * @param user 用户
      * @return
      */
-    int updateUserByPrimaryKey(User user);
+    int updateUserByPk(User user);
 
     /**
      * 查询用户数量

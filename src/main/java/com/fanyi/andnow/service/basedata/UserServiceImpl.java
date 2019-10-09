@@ -23,8 +23,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(Integer pkUser) {
-
-        return userMapper.selectUserByPrimaryKey(pkUser);
+        if(pkUser == null || pkUser < 0){
+            return null;
+        }
+        return userMapper.selectUserByPk(pkUser);
     }
 
     @Override
@@ -51,7 +53,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getLoginUser(String code, String password) {
-        return userMapper.selectLoginUser(code,password);
+        if(code.isEmpty() || password.isEmpty()){
+            return null;
+        }
+        User loginUser = userMapper.selectLoginUser(code,password);
+        return loginUser;
     }
 
     @Override

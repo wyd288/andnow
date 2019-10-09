@@ -24,7 +24,7 @@ public class LoginController {
     /**
      * 获取登陆用户信息
      * @param code  用户编码
-     * @param password  用户编码
+     * @param password  用户密码
      * @return  返回用户主键
      */
     @GetMapping("/login")
