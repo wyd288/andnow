@@ -37,7 +37,7 @@ public class UserController {
      * @param user（用户）
      * @return int （大于0成功，小于0失败。）
      */
-    @PostMapping()
+    @PostMapping("/add")
     public int addUser(@RequestBody User user){
         if(user == null){
             return -1;

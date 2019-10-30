@@ -4,6 +4,7 @@ import com.fanyi.andnow.dao.basedata.UserMapper;
 import com.fanyi.andnow.entity.basedata.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -32,9 +33,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public int addUser(User user) {
         User userTemp = user;
+
+
         userTemp.setPkGroup(1);
         userTemp.setPkOrg(1);
-        userTemp.setName("测试名称");
         userTemp.setCreator(1);
         userTemp.setCreationtime(new Date());
         userTemp.setTs(new Date());
@@ -53,6 +55,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getLoginUser(String code, String password) {
+
         return userMapper.selectLoginUser(code,password);
     }
 
