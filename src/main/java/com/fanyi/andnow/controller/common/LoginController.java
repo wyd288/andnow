@@ -4,14 +4,11 @@ import com.fanyi.andnow.service.basedata.UserService;
 import com.fanyi.andnow.entity.basedata.User;
 import org.apache.ibatis.annotations.Param;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sun.security.provider.MD5;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * 登陆页面控制类
