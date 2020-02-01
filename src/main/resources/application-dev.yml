@@ -5,8 +5,8 @@ spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://www.fan1111.com:3306/dbscm?useSSL=false
-    username: dbscm
-    password: 1234
+    username: wild
+    password: 341167
     type: com.alibaba.druid.pool.DruidDataSource
 
 #配置集成tomcat的端口，可自行修改
