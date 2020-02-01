@@ -4,7 +4,7 @@ spring:
   # 配置数据源
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://www.fan1111.com:3306/dbscm?useSSL=false
+    url: jdbc:mysql://www.fan1111.com:3306/wild?useSSL=false
     username: wild
     password: 341167
     type: com.alibaba.druid.pool.DruidDataSource
